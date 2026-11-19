@@ -1,0 +1,108 @@
+/* Background color */
+ion-content {
+  --background: #f4f5fa;
+}
+
+/* Center the login card */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100%;
+}
+
+/* Login card design */
+ion-card {
+  width: 100%;
+  max-width: 400px;
+  height: 450px;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 30px;
+  background: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+/* Card header */
+ion-card-header {
+  text-align: center;
+}
+
+ion-card-title {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+/* Input labels */
+ion-label {
+  display: block;
+  font-size: 12px;
+  font-weight: bold;
+  margin-top: 12px;
+  margin-bottom: 5px;
+  color: #555555;
+}
+
+/* Input fields */
+ion-input {
+  margin-bottom: 5px;
+  --border-radius: 5px;
+  --background: #fafafa;
+  font-size: 13px;
+}
+
+/* Login button */
+ion-card > ion-button {
+  width: 100%;
+  margin: 10px 0 0;
+  --border-radius: 8px;
+  --background: #3478f6;
+}
+
+/* Header design */
+ion-toolbar {
+  --background: #3478f6;
+  --color: white;
+}
+
+ion-title {
+  color: white;
+}
+
+
+/* Center and align Admin and Student buttons */
+.button-row {
+  background: #f1f2f4;
+  border-radius: 10px;
+  padding: 3px;
+  margin: 0 auto 15px;
+  flex-wrap: nowrap;
+}
+
+.button-row ion-col {
+  padding: 0 2px;
+}
+
+.button-row ion-button {
+  margin: 0;
+}
+
+.tab-button {
+  width: 100%;
+  height: 32px;
+  margin: 0;
+  font-size: 11px;
+  font-weight: 600;
+  --background: transparent;
+  --color: #777777;
+  --box-shadow: none;
+  --border-radius: 8px;
+}
+
+/* Active button */
+.tab-button.active {
+  --background: white;
+  --color: #3478f6;
+  --box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}

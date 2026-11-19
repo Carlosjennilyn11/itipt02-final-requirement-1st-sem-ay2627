@@ -1,0 +1,66 @@
+
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      <ion-icon name="business-outline"></ion-icon>
+      User Login
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Sign Up</ion-card-title>
+    </ion-card-header>
+
+    <ion-label>First name</ion-label>
+    <ion-input type="text" placeholder="Enter first name" fill="outline"
+      [(ngModel)]="first_name" name="first_name">
+      <ion-icon name="person" slot="start"></ion-icon>
+    </ion-input>
+
+    <ion-label>Last name</ion-label>
+    <ion-input type="text" placeholder="Enter last name" fill="outline"
+      [(ngModel)]="last_name" name="last_name">
+      <ion-icon name="person" slot="start"></ion-icon>
+    </ion-input>
+
+    <ion-label>Username</ion-label>
+    <ion-input type="text" placeholder="Enter username" fill="outline"
+      [(ngModel)]="username" name="username">
+      <ion-icon name="person" slot="start"></ion-icon>
+    </ion-input>
+
+    <!-- ADDED EMAIL FIELD -->
+    <ion-label>Email Address</ion-label>
+    <ion-input type="email" placeholder="Enter email" fill="outline"
+      [(ngModel)]="email" name="email">
+      <ion-icon name="mail" slot="start"></ion-icon>
+    </ion-input>
+
+    <ion-label>Password</ion-label>
+    <ion-input type="password" placeholder="*****" fill="outline"
+      [(ngModel)]="password" name="password">
+      <ion-icon name="lock-closed" slot="start"></ion-icon>
+    </ion-input>
+
+    <ion-label>Confirm Password</ion-label>
+    <ion-input type="password" placeholder="*****" fill="outline"
+      [(ngModel)]="confirm_password" name="confirm_password">
+      <ion-icon name="lock-closed" slot="start"></ion-icon>
+    </ion-input>
+
+    <ion-button (click)="register()">
+      <ion-icon name="log-in"></ion-icon>
+      Create Account
+    </ion-button>
+
+    <ion-button (click)="backToLogin()">
+      Back to Login
+    </ion-button>
+  </ion-card>
+
+</ion-content>
+

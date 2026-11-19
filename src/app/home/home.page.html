@@ -1,0 +1,111 @@
+
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      <ion-icon name="business-outline"></ion-icon>
+      Hotel Reservation
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+
+  <div class="login-container">
+
+    <!-- ADMIN LOGIN CARD -->
+    <ion-card *ngIf="activeRole === 'admin'">
+
+      <ion-grid>
+        <ion-row class="button-row">
+          <ion-col>
+            <ion-button
+              class="tab-button"
+              (click)="switchRole('admin')">
+              Admin
+            </ion-button>
+          </ion-col>
+
+          <ion-col>
+            <ion-button
+              class="tab-button"
+              (click)="switchRole('user')">
+              User
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <ion-card-header>
+        <ion-card-title>Admin</ion-card-title>
+      </ion-card-header>
+
+      <ion-label>EMAIL ADDRESS</ion-label>
+      <ion-input placeholder="user@gmail.com" fill="outline" [(ngModel)]="email" name="adminEmail">
+        <ion-icon name="mail" slot="start"></ion-icon>
+      </ion-input>
+
+      <ion-label>PASSWORD</ion-label>
+      <ion-input placeholder="*****" fill="outline" type="password" [(ngModel)]="password" name="adminPassword">
+        <ion-icon name="lock-closed" slot="start"></ion-icon>
+      </ion-input>
+
+      <ion-button (click)="login()">
+        <ion-icon name="log-in"></ion-icon>
+        Log In
+      </ion-button>
+
+    </ion-card>
+
+
+    <!-- USER LOGIN CARD -->
+
+    <ion-card *ngIf="activeRole === 'user'">
+
+      <ion-grid>
+        <ion-row class="button-row">
+          <ion-col>
+            <ion-button
+              class="tab-button"
+              (click)="switchRole('admin')">
+              Admin
+            </ion-button>
+          </ion-col>
+
+          <ion-col>
+            <ion-button
+              class="tab-button"
+              (click)="switchRole('user')">
+              User
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <ion-card-header>
+        <ion-card-title>Hotel Reservation</ion-card-title>
+      </ion-card-header>
+
+      <ion-label>USER EMAIL</ion-label>
+      <ion-input type="email" placeholder="Enter email" fill="outline" [(ngModel)]="email" name="userEmail" >
+        <ion-icon name="mail" slot="start"></ion-icon>
+      </ion-input>
+
+      <ion-label>PASSWORD</ion-label>
+      <ion-input type="password" placeholder="*****" fill="outline" [(ngModel)]="password" name="userPassword">
+        <ion-icon name="lock-closed" slot="start"></ion-icon>
+      </ion-input>
+
+      <ion-button expand="block" (click)="login()">
+        <ion-icon name="log-in"></ion-icon>
+        Login as User
+      </ion-button>
+
+      <ion-button expand="block" (click)="goToSignup()">
+        Create an account
+      </ion-button>
+
+    </ion-card>
+
+  </div>
+
+</ion-content>

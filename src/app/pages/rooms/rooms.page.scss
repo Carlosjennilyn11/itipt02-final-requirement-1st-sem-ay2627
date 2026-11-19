@@ -1,0 +1,277 @@
+
+/* =================================
+   ROOMS CONTENT
+================================= */
+
+.rooms-content {
+  --background: #F8F8ED;
+}
+
+/* =================================
+   HEADER
+================================= */
+
+ion-header ion-toolbar {
+  --background: #173BAF;
+  --color: #ffffff;
+}
+
+ion-header ion-title {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+/* =================================
+   WELCOME BANNER
+================================= */
+
+.welcome-section {
+  position: relative;
+  margin: 18px;
+  height: 240px;
+  overflow: hidden;
+  border-radius: 18px;
+  box-shadow: none;
+}
+
+.welcome-section ion-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.welcome-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 25px;
+
+  background: linear-gradient(
+    90deg,
+    rgba(10, 29, 75, 0.82),
+    rgba(10, 29, 75, 0.15)
+  );
+}
+
+.welcome-overlay h2 {
+  color: #ffffff;
+  font-size: 29px;
+  font-weight: 700;
+  margin: 0 0 10px;
+}
+
+.welcome-overlay p {
+  color: #ffffff;
+  font-size: 14px;
+  margin: 0;
+}
+
+/* =================================
+   ROOMS HEADING
+================================= */
+
+.rooms-heading {
+  margin: 18px 18px 5px;
+  background: transparent;
+  box-shadow: none;
+}
+
+.rooms-heading h2 {
+  color: #173BAF;
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0 0 6px;
+}
+
+.rooms-heading p {
+  color: #78849C;
+  font-size: 13px;
+  margin: 0;
+}
+
+/* =================================
+   ROOMS GRID
+================================= */
+
+.rooms-grid {
+  padding: 5px 10px 20px;
+}
+
+.rooms-grid ion-col {
+  padding: 6px;
+}
+
+/* =================================
+   ROOM CARD
+================================= */
+
+.room-card {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  border-radius: 15px;
+  overflow: hidden;
+
+  box-shadow: 0 4px 15px rgba(23, 59, 175, 0.08);
+}
+
+.room-card ion-card-content {
+  padding: 10px;
+}
+
+/* =================================
+   ROOM IMAGE
+================================= */
+
+.room-image {
+  width: 100%;
+  height: 125px;
+  overflow: hidden;
+}
+
+.room-image ion-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* =================================
+   ROOM NAME
+================================= */
+
+.room-card h2 {
+  color: #173BAF;
+  font-size: 15px;
+  font-weight: 700;
+  margin: 5px 0 7px;
+}
+
+/* =================================
+   ROOM RATING
+================================= */
+
+.room-card h3 {
+  color: #78849C;
+  font-size: 10px;
+  font-weight: 500;
+  margin: 0 0 8px;
+}
+
+.room-card h3 ion-icon {
+  color: #E6A52B;
+  font-size: 13px;
+  vertical-align: middle;
+}
+
+/* =================================
+   ROOM PRICE
+================================= */
+
+.room-card h1 {
+  color: #263C67;
+  font-size: 13px;
+  font-weight: 700;
+  margin: 5px 0 10px;
+}
+
+/* =================================
+   BOOK NOW BUTTON
+================================= */
+
+.room-card .book-button {
+  --background: #173BAF;
+  --background-hover: #102D91;
+  --color: #ffffff;
+  --border-radius: 8px;
+  --box-shadow: none;
+
+  height: 34px;
+  width: 100%;
+  margin: 0;
+
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: none;
+}
+
+/* =================================
+   TABLET AND DESKTOP
+================================= */
+
+@media (min-width: 768px) {
+
+  .room-image {
+    height: 180px;
+  }
+
+  .room-card ion-card-content {
+    padding: 15px;
+  }
+
+  .room-card h2 {
+    font-size: 18px;
+  }
+
+  .room-card h3 {
+    font-size: 12px;
+  }
+
+  .room-card h1 {
+    font-size: 16px;
+  }
+
+  .room-card .book-button {
+    height: 40px;
+    font-size: 13px;
+  }
+
+}
+
+/* =================================
+   MOBILE
+================================= */
+
+@media (max-width: 576px) {
+
+  .welcome-section {
+    height: 200px;
+  }
+
+  .welcome-overlay h2 {
+    font-size: 24px;
+  }
+
+  .welcome-overlay p {
+    font-size: 12px;
+  }
+
+  .room-image {
+    height: 115px;
+  }
+
+  .room-card ion-card-content {
+    padding: 8px;
+  }
+
+  .room-card h2 {
+    font-size: 13px;
+  }
+
+  .room-card h3 {
+    font-size: 9px;
+  }
+
+  .room-card h1 {
+    font-size: 12px;
+  }
+
+  .room-card .book-button {
+    height: 32px;
+    font-size: 10px;
+  }
+
+}
