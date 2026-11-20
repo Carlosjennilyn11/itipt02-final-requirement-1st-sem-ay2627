@@ -1,13 +1,176 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>my_bookings</ion-title>
-  </ion-toolbar>
-</ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">my_bookings</ion-title>
-    </ion-toolbar>
-  </ion-header>
+
+  <div class="bookings-container">
+
+    <div class="page-heading">
+      <div class="heading-content">
+
+        <ion-icon name="calendar-outline"></ion-icon>
+        <img src="https://i.pinimg.com/736x/d6/39/d5/d639d573cee6bc115919000c0338de87.jpg" alt="mm">
+        <div>
+          <h1>My Bookings</h1>
+          <p>View your reservations, re-book your favorite rooms, and leave a review.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="filter-container">
+
+      <ion-segment value="all" mode="ios">
+
+        <ion-segment-button value="all">
+          <ion-label>All Bookings</ion-label>
+        </ion-segment-button>
+
+        <ion-segment-button value="confirmed">
+          <ion-icon name="checkmark-outline"></ion-icon>
+          <ion-label>Confirmed</ion-label>
+        </ion-segment-button>
+
+        <ion-segment-button value="pending">
+          <ion-icon name="time-outline"></ion-icon>
+          <ion-label>Pending</ion-label>
+        </ion-segment-button>
+
+        <ion-segment-button value="completed">
+          <ion-icon name="checkmark-circle-outline"></ion-icon>
+          <ion-label>Completed</ion-label>
+        </ion-segment-button>
+
+        <ion-segment-button value="cancelled">
+          <ion-icon name="close-circle-outline"></ion-icon>
+          <ion-label>Cancelled</ion-label>
+        </ion-segment-button>
+
+      </ion-segment>
+
+    </div>
+
+    <div class="booking-list">
+
+      @for (booking of bookings(); track booking.id) {
+
+        <ion-card class="booking-card">
+
+          <ion-card-content>
+
+            <div class="room-image-container">
+              <img
+                [src]="booking.image"
+                [alt]="booking.roomName"
+                class="room-image">
+            </div>
+
+            <div class="booking-information">
+
+              <div class="booking-header">
+
+                <div>
+                  <h2>{{ booking.roomName }}</h2>
+
+                  <p class="booking-id">
+                    <ion-icon name="receipt-outline"></ion-icon>
+                    Booking ID: {{ booking.bookingId }}
+                  </p>
+                </div>
+
+                <ion-badge
+                  [color]="
+                    booking.status === 'Confirmed' ? 'success' :
+                    booking.status === 'Completed' ? 'primary' :
+                    booking.status === 'Pending' ? 'warning' :
+                    'danger'
+                  ">
+
+                  <ion-icon
+                    [name]="
+                      booking.status === 'Confirmed' ? 'checkmark-circle' :
+                      booking.status === 'Completed' ? 'checkmark-circle' :
+                      booking.status === 'Pending' ? 'time' :
+                      'close-circle'
+                    ">
+                  </ion-icon>
+
+                  {{ booking.status }}
+
+                </ion-badge>
+
+              </div>
+
+              <div class="booking-details">
+
+                <div class="detail-item">
+                  <ion-icon name="calendar-outline"></ion-icon>
+
+                  <div>
+                    <span>Check-in</span>
+                    <p>{{ booking.checkIn }}</p>
+                  </div>
+                </div>
+
+                <div class="detail-item">
+                  <ion-icon name="calendar-outline"></ion-icon>
+
+                  <div>
+                    <span>Check-out</span>
+                    <p>{{ booking.checkOut }}</p>
+                  </div>
+                </div>
+
+                <div class="detail-item">
+                  <ion-icon name="people-outline"></ion-icon>
+
+                  <div>
+                    <span>Guests</span>
+                    <p>{{ booking.guests }} Adults</p>
+                  </div>
+                </div>
+
+                <div class="detail-item booking-price">
+                  <ion-icon name="card-outline"></ion-icon>
+
+                  <div>
+                    <span>Total Price</span>
+                    <p>₱{{ booking.totalPrice | number:'1.2-2' }}</p>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+
+            <div class="booking-actions">
+
+              <ion-button class="rebook-button">
+                <ion-icon name="refresh-outline" slot="start"></ion-icon>
+                Re-Book
+              </ion-button>
+
+              <ion-button fill="outline" class="review-button">
+                <ion-icon name="star-outline" slot="start"></ion-icon>
+                Review
+              </ion-button>
+
+            </div>
+
+          </ion-card-content>
+
+        </ion-card>
+
+      } @empty {
+
+        <div class="empty-bookings">
+          <ion-icon name="calendar-outline"></ion-icon>
+          <h2>No Bookings Found</h2>
+          <p>You don't have any reservations yet.</p>
+        </div>
+
+      }
+
+    </div>
+
+  </div>
+
 </ion-content>
