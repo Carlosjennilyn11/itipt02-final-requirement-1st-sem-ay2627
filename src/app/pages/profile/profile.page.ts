@@ -52,6 +52,13 @@ import {
 })
 export class ProfilePage implements OnInit {
 
+  firstName: string = '';
+  lastName: string = '';
+  fullName: string = '';
+  email: string = '';
+  username: string = '';
+  role: string = '';
+
   constructor() {
     addIcons({
       personCircleOutline,
@@ -63,6 +70,40 @@ export class ProfilePage implements OnInit {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.loadProfile();
+  }
+
+  ionViewWillEnter() {
+    this.loadProfile();
+  }
+
+  // LOAD USER INFORMATION
+  loadProfile() {
+
+    const userData = localStorage.getItem('currentUser');
+
+    if (userData) {
+
+      const user = JSON.parse(userData);
+
+      this.firstName = user.first_name || '';
+      this.lastName = user.last_name || '';
+      this.fullName = `${this.firstName} ${this.lastName}`.trim();
+      this.email = user.email || '';
+      this.username = user.username || '';
+      this.role = user.role || '';
+
+    } else {
+
+      this.firstName = '';
+      this.lastName = '';
+      this.fullName = '';
+      this.email = '';
+      this.username = '';
+      this.role = '';
+
+    }
+  }
 
 }

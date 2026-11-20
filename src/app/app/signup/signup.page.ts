@@ -91,10 +91,10 @@ export class SignupPage implements OnInit {
 
     // CHECK EMPTY FIELDS
     if (
-      !this.first_name ||
-      !this.last_name ||
-      !this.username ||
-      !this.email ||
+      !this.first_name.trim() ||
+      !this.last_name.trim() ||
+      !this.username.trim() ||
+      !this.email.trim() ||
       !this.password ||
       !this.confirm_password
     ) {
@@ -124,10 +124,10 @@ export class SignupPage implements OnInit {
 
     // REGISTRATION DATA
     const userData = {
-      first_name: this.first_name,
-      last_name: this.last_name,
-      username: this.username,
-      email: this.email,
+      first_name: this.first_name.trim(),
+      last_name: this.last_name.trim(),
+      username: this.username.trim(),
+      email: this.email.trim(),
       password: this.password
     };
 
@@ -153,7 +153,7 @@ export class SignupPage implements OnInit {
                 this.confirm_password = '';
 
                 // RETURN TO MAIN LOGIN
-                this.router.navigateByUrl('/main');
+                this.router.navigateByUrl('/home');
 
               }
             }
@@ -166,10 +166,18 @@ export class SignupPage implements OnInit {
 
       error: async (error) => {
 
+        console.error('REGISTRATION ERROR:', error);
+
+        const errorMessage =
+          error.error?.detail
+            ? typeof error.error.detail === 'string'
+              ? error.error.detail
+              : JSON.stringify(error.error.detail)
+            : 'Unable to connect to the server. Please check your backend and try again.';
+
         const alert = await this.alertController.create({
           header: 'Registration Failed',
-          message: error.error?.detail ||
-                   'Unable to create account. Please try again.',
+          message: errorMessage,
           buttons: ['OK']
         });
 

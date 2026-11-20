@@ -121,12 +121,15 @@ export class AppComponent implements OnInit {
   // LOGOUT FUNCTION
   logout() {
 
+    // REMOVE SAVED USER INFORMATION
     localStorage.removeItem('currentUser');
 
+    // CLEAR NAME
     this.firstName = '';
     this.lastName = '';
 
-    this.router.navigateByUrl('/main');
+    // RETURN TO LOGIN PAGE
+    this.router.navigateByUrl('/main', { replaceUrl: true });
 
   }
 

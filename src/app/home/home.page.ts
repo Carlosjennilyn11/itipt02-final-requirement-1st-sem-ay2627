@@ -61,7 +61,7 @@ export class HomePage {
   email: string = '';
   password: string = '';
 
-  activeRole: string = 'admin';
+  activeRole: string = 'user';
 
   switchRole(role: string) {
     this.activeRole = role;
@@ -140,10 +140,13 @@ export class HomePage {
           return;
         }
 
-        // SAVE USER INFORMATION FOR MENU BAR
+        // SAVE COMPLETE USER INFORMATION FOR MENU BAR AND PROFILE
         localStorage.setItem('currentUser', JSON.stringify({
+          id: response.user?.id || '',
           first_name: response.user?.first_name || '',
           last_name: response.user?.last_name || '',
+          username: response.user?.username || '',
+          email: response.user?.email || '',
           role: response.user?.role || ''
         }));
 

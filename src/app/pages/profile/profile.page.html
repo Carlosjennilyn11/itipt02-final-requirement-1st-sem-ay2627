@@ -19,7 +19,7 @@
       <ion-icon name="person-circle-outline"></ion-icon>
       <ion-img src="https://i.pinimg.com/1200x/65/ab/50/65ab50e0f166f78d14ced864e866f120.jpg" alt="bg"></ion-img>
 
-      <ion-card-title>Jennilyn Carlos</ion-card-title>
+      <ion-card-title>{{ fullName }}</ion-card-title>
       <ion-card-subtitle>Customer</ion-card-subtitle>
     </ion-card-content>
   </ion-card>
@@ -34,11 +34,13 @@
     </ion-card-header>
 
     <ion-card-content>
-      <ion-label>Full Name</ion-label>
+      <ion-label>Full Name: {{ fullName }}</ion-label>
       <br><br>
-      <ion-label>Email Address</ion-label>
+
+      <ion-label>Email Address: {{ email }}</ion-label>
       <br><br>
-      <ion-label>Username</ion-label>
+
+      <ion-label>Username: {{ username }}</ion-label>
     </ion-card-content>
   </ion-card>
 </ion-content>
