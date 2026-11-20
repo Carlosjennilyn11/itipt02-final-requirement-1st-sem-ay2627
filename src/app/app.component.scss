@@ -1,12 +1,12 @@
 
-/* SIDEBAR WIDTH */
+
 ion-menu {
   --width: 280px;
   --background: #F8F8ED;
   height: 100%;
 }
 
-/* SIDEBAR CONTENT */
+
 ion-menu ion-content {
   --background: #F8F8ED;
   --overflow: hidden;
@@ -18,7 +18,7 @@ ion-menu ion-content::part(scroll) {
   overscroll-behavior: none;
 }
 
-/* HEADER */
+
 .sidebar-header {
   background: linear-gradient(135deg, #173BAF, #102D91);
   padding: 25px 20px 20px;
@@ -27,7 +27,7 @@ ion-menu ion-content::part(scroll) {
   border-radius: 0 0 22px 22px;
 }
 
-/* LOGO */
+
 .logo-icon {
   font-size: 38px;
   color: #ffffff;
@@ -49,7 +49,7 @@ ion-menu ion-content::part(scroll) {
   letter-spacing: 0.5px;
 }
 
-/* PROFILE SECTION */
+
 .profile-section {
   display: flex;
   align-items: center;
@@ -88,13 +88,11 @@ ion-menu ion-content::part(scroll) {
   color: #ffffff;
 }
 
-/* MENU LIST */
 .menu-list {
   background: transparent;
   padding: 12px 12px 5px;
 }
 
-/* MENU ITEMS */
 .menu-list ion-item {
   --background: transparent;
   --color: #344D80;
@@ -107,14 +105,12 @@ ion-menu ion-content::part(scroll) {
   font-weight: 500;
 }
 
-/* MENU ICONS */
 .menu-list ion-item ion-icon {
   color: #344D80;
   font-size: 20px;
   margin-right: 12px;
 }
 
-/* ACTIVE MENU */
 .menu-list ion-item.selected {
   --background: #DCE2EE;
   --color: #173BAF;
@@ -125,12 +121,10 @@ ion-menu ion-content::part(scroll) {
   color: #173BAF;
 }
 
-/* REMOVE DEFAULT ITEM BORDER */
 .menu-list ion-item::part(native) {
   border: none;
 }
 
-/* LOGOUT FOOTER */
 .menu-footer {
   background: #F8F8ED;
   padding: 10px 15px 12px;
@@ -144,7 +138,6 @@ ion-menu ion-content::part(scroll) {
   padding: 0;
 }
 
-/* LOGOUT BUTTON */
 .menu-footer ion-button {
   --background: transparent;
   --background-hover: #E8EDF7;

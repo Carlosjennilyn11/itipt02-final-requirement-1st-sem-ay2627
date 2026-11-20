@@ -1,15 +1,9 @@
 
-/* =================================
-   ROOMS CONTENT
-================================= */
 
 .rooms-content {
   --background: #F8F8ED;
 }
 
-/* =================================
-   HEADER
-================================= */
 
 ion-header ion-toolbar {
   --background: #173BAF;
@@ -22,9 +16,6 @@ ion-header ion-title {
   letter-spacing: 0.5px;
 }
 
-/* =================================
-   WELCOME BANNER
-================================= */
 
 .welcome-section {
   position: relative;
@@ -69,9 +60,6 @@ ion-header ion-title {
   margin: 0;
 }
 
-/* =================================
-   ROOMS HEADING
-================================= */
 
 .rooms-heading {
   margin: 18px 18px 5px;
@@ -92,9 +80,6 @@ ion-header ion-title {
   margin: 0;
 }
 
-/* =================================
-   ROOMS GRID
-================================= */
 
 .rooms-grid {
   padding: 5px 10px 20px;
@@ -103,10 +88,6 @@ ion-header ion-title {
 .rooms-grid ion-col {
   padding: 6px;
 }
-
-/* =================================
-   ROOM CARD
-================================= */
 
 .room-card {
   margin: 0;
@@ -123,9 +104,6 @@ ion-header ion-title {
   padding: 10px;
 }
 
-/* =================================
-   ROOM IMAGE
-================================= */
 
 .room-image {
   width: 100%;
@@ -139,9 +117,6 @@ ion-header ion-title {
   object-fit: cover;
 }
 
-/* =================================
-   ROOM NAME
-================================= */
 
 .room-card h2 {
   color: #173BAF;
@@ -150,9 +125,6 @@ ion-header ion-title {
   margin: 5px 0 7px;
 }
 
-/* =================================
-   ROOM RATING
-================================= */
 
 .room-card h3 {
   color: #78849C;
@@ -167,9 +139,6 @@ ion-header ion-title {
   vertical-align: middle;
 }
 
-/* =================================
-   ROOM PRICE
-================================= */
 
 .room-card h1 {
   color: #263C67;
@@ -178,9 +147,7 @@ ion-header ion-title {
   margin: 5px 0 10px;
 }
 
-/* =================================
-   BOOK NOW BUTTON
-================================= */
+
 
 .room-card .book-button {
   --background: #173BAF;
@@ -198,9 +165,7 @@ ion-header ion-title {
   text-transform: none;
 }
 
-/* =================================
-   TABLET AND DESKTOP
-================================= */
+
 
 @media (min-width: 768px) {
 
@@ -230,10 +195,6 @@ ion-header ion-title {
   }
 
 }
-
-/* =================================
-   MOBILE
-================================= */
 
 @media (max-width: 576px) {
 

@@ -1,5 +1,4 @@
 
-/* MAIN BACKGROUND */
 
 ion-content {
   --background: transparent;
@@ -12,7 +11,6 @@ ion-content::part(background) {
     center center / cover no-repeat;
 }
 
-/* HEADER */
 
 ion-header:first-of-type ion-toolbar {
   --background: #1537A6;
@@ -31,7 +29,6 @@ ion-content ion-header[collapse="condense"] {
   display: none;
 }
 
-/* CONTENT LAYOUT */
 
 ion-content::part(scroll) {
   display: grid;
@@ -43,7 +40,6 @@ ion-content::part(scroll) {
   box-sizing: border-box;
 }
 
-/* FIRST CARD - PROFILE */
 
 ion-content > ion-card:first-of-type {
   width: 100%;
@@ -71,7 +67,6 @@ ion-content > ion-card:first-of-type ion-card-content {
   height: 100%;
 }
 
-/* PERSON ICON - CIRCULAR */
 
 ion-content > ion-card:first-of-type ion-icon[name="person-circle-outline"] {
   width: 115px;
@@ -91,13 +86,11 @@ ion-content > ion-card:first-of-type ion-icon[name="person-circle-outline"] {
   padding: 15px;
 }
 
-/* HIDE PROFILE IMAGE */
 
 ion-content > ion-card:first-of-type ion-img {
   display: none;
 }
 
-/* PROFILE NAME */
 
 ion-content > ion-card:first-of-type ion-card-title {
   margin-top: 12px;
@@ -113,7 +106,6 @@ ion-content > ion-card:first-of-type ion-card-subtitle {
   text-transform: none;
 }
 
-/* SECOND CARD - PERSONAL INFORMATION */
 
 ion-content > ion-card:nth-of-type(2) {
   width: 100%;
@@ -130,7 +122,6 @@ ion-content > ion-card:nth-of-type(2) {
   box-shadow: 0 8px 25px rgba(0,0,0,0.25);
 }
 
-/* CARD HEADER */
 
 ion-content > ion-card:nth-of-type(2) ion-card-header {
   padding: 15px 18px 8px;
@@ -149,14 +140,12 @@ ion-content > ion-card:nth-of-type(2) ion-card-title {
   border-bottom: 1px solid rgba(255,255,255,0.55);
 }
 
-/* HEADER ICON */
 
 ion-content > ion-card:nth-of-type(2) ion-card-title ion-icon {
   font-size: 23px;
   color: #102b39;
 }
 
-/* INFORMATION CONTENT */
 
 ion-content > ion-card:nth-of-type(2) ion-card-content {
   padding: 0 18px 12px;
@@ -171,7 +160,6 @@ ion-content > ion-card:nth-of-type(2) ion-label {
   border-bottom: 1px solid rgba(255,255,255,0.35);
 }
 
-/* MOBILE RESPONSIVE */
 
 @media (max-width: 600px) {
 
