@@ -22,293 +22,96 @@
 
   </div>
 
-  
-  <ion-grid class="rooms-grid">
+
+  <!-- LOADING MESSAGE -->
+  <div *ngIf="isLoading">
+    <p style="text-align: center;">Loading rooms...</p>
+  </div>
+
+
+  <!-- ERROR MESSAGE -->
+  <div *ngIf="errorMessage">
+    <p style="text-align: center; color: red;">
+      {{ errorMessage }}
+    </p>
+
+    <ion-button expand="block" (click)="loadRooms()">
+      Try Again
+    </ion-button>
+  </div>
+
+
+  <!-- ROOMS GRID -->
+  <ion-grid class="rooms-grid" *ngIf="!isLoading && !errorMessage">
+
     <ion-row>
 
-      <ion-col size="6">
+      <!-- DISPLAY ROOMS FROM DATABASE -->
+      <ion-col size="6" *ngFor="let room of rooms">
+
         <ion-card class="room-card">
 
           <div class="room-image">
+
             <ion-img
-              src="https://i.pinimg.com/736x/8b/9d/c2/8b9dc228c637b55b1b5efba4ec54f9db.jpg"
-              alt="Room 1">
+              [src]="room.image"
+              [alt]="room.room_name">
             </ion-img>
+
           </div>
 
           <ion-card-content>
-            <h2>Room 1</h2>
 
+            <!-- ROOM NAME -->
+            <h2>{{ room.room_name }}</h2>
+
+            <!-- ROOM AVAILABILITY -->
             <h3>
-              <ion-icon name="star-outline"></ion-icon>
-              (250 reviews)
+              {{ room.availability }}
             </h3>
 
-            <h1>Details: Queen-sized Bed, Air Conditioning, Free Wi-Fi, Flat-screen TV, Private Bathroom, Fresh Towels & Toiletries, Complimentary Drinking Water
-              <br><br>₱2,000/day & night</h1>
+            <!-- ROOM DETAILS -->
+            <h1>
+              Details: {{ room.description }}
 
-            <ion-button expand="block" class="book-button">
-              Book Now
+              <br><br>
+
+              Capacity: {{ room.capacity }} Guests
+
+              <br><br>
+
+              ₱{{ room.price }}/day & night
+            </h1>
+
+            <!-- BOOK BUTTON -->
+            <ion-button
+              expand="block"
+              class="book-button"
+              [disabled]="room.availability === 'Booked'">
+
+              {{ room.availability === 'Booked' ? 'Booked' : 'Book Now' }}
+
             </ion-button>
+
           </ion-card-content>
 
         </ion-card>
-      </ion-col>
 
-      <ion-col size="6">
-        <ion-card class="room-card">
-
-          <div class="room-image">
-            <ion-img
-              src="https://i.pinimg.com/1200x/d6/c1/c7/d6c1c7a49d98039e6f18af3ca93ac6c3.jpg"
-              alt="Room 2">
-            </ion-img>
-          </div>
-
-          <ion-card-content>
-            <h2>Room 2</h2>
-
-            <h3>
-              <ion-icon name="star-outline"></ion-icon>
-              (250 reviews)
-            </h3>
-
-            <h1>Details: King-sized Bed, Air Conditioning, Free Wi-Fi, Smart TV, Private Bathroom, Hot & Cold Shower, Towels, Toiletries, Mini Refrigerator.<br><br>₱2,500/day & night</h1>
-
-            <ion-button expand="block" class="book-button">
-              Book Now
-            </ion-button>
-          </ion-card-content>
-
-        </ion-card>
-      </ion-col>
-
-      <ion-col size="6">
-        <ion-card class="room-card">
-
-          <div class="room-image">
-            <ion-img
-              src="https://i.pinimg.com/1200x/3b/09/42/3b0942f7dffe3cfe9b83208105f086bf.jpg"
-              alt="Deluxe Room">
-            </ion-img>
-          </div>
-
-          <ion-card-content>
-            <h2>Deluxe Room</h2>
-
-            <h3>
-              <ion-icon name="star-outline"></ion-icon>
-              (250 reviews)
-            </h3>
-
-            <h1>Details:King-sized Bed, Spacious Room Interior, Air Conditioning, Free High-Speed Wi-Fi, Smart TV, Private Bathroom, Hot & Cold Shower, Mini Refrigerator, Coffee & Tea Set, Toiletries.<br><br>₱3,000/night</h1>
-
-            <ion-button expand="block" class="book-button">
-              Book Now
-            </ion-button>
-          </ion-card-content>
-
-        </ion-card>
-      </ion-col>
-
-      <ion-col size="6">
-        <ion-card class="room-card">
-
-          <div class="room-image">
-            <ion-img
-              src="https://i.pinimg.com/736x/f0/88/47/f0884751be17b353c7e1c230369a86a5.jpg"
-              alt="Standard Room">
-            </ion-img>
-          </div>
-
-          <ion-card-content>
-            <h2>Standard Room</h2>
-
-            <h3>
-              <ion-icon name="star-outline"></ion-icon>
-              (100 reviews)
-            </h3>
-
-            <h1>Details: Queen-sized Bed, Air Conditioning, Free Wi-Fi, Flat-screen TV, Private Bathroom, Hot & Cold Shower, Fresh Towels, Basic Toiletries, Complimentary Drinking Water.<br><br>₱2,000/night</h1>
-
-            <ion-button expand="block" class="book-button">
-              Book Now
-            </ion-button>
-          </ion-card-content>
-
-        </ion-card>
-      </ion-col>
-
-      <ion-col size="6">
-        <ion-card class="room-card">
-
-          <div class="room-image">
-            <ion-img
-              src="https://i.pinimg.com/736x/a6/7c/6d/a67c6def796acb5df37435a2203b67bd.jpg"
-              alt="Deluxe Room">
-            </ion-img>
-          </div>
-
-          <ion-card-content>
-            <h2>Deluxe Room</h2>
-
-            <h3>
-              <ion-icon name="star-outline"></ion-icon>
-              (100 reviews)
-            </h3>
-
-            <h1>Details: Premium King-sized Bed, Spacious Bedroom, Sitting / Lounge Area, Air Conditioning, Free High-Speed Wi-Fi, Smart TV, Private Bathroom, Mini Refrigerator, Coffee & Tea Set.<br><br>₱3,000/night</h1>
-
-            <ion-button expand="block" class="book-button">
-              Book Now
-            </ion-button>
-          </ion-card-content>
-
-        </ion-card>
-      </ion-col>
-
-      <ion-col size="6">
-        <ion-card class="room-card">
-
-          <div class="room-image">
-            <ion-img
-              src="https://i.pinimg.com/736x/3b/d2/5e/3bd25e8963584a13f000a53e93e53b03.jpg"
-              alt="2 Bed Room">
-            </ion-img>
-          </div>
-
-          <ion-card-content>
-            <h2>2 Bed Room</h2>
-
-            <h3>
-              <ion-icon name="star-outline"></ion-icon>
-              (100 reviews)
-            </h3>
-
-            <h1>Details: 2 Comfortable Beds, Air Conditioning, Free Wi-Fi, Flat-screen TV, Private Bathroom, Hot & Cold Shower, Towels, Toiletries, Complimentary Drinking Water, Wardrobe / Closet.<br><br>₱3,500/night</h1>
-
-            <ion-button expand="block" class="book-button">
-              Book Now
-            </ion-button>
-          </ion-card-content>
-
-        </ion-card>
-      </ion-col>
-
-      <ion-col size="6">
-        <ion-card class="room-card">
-
-          <div class="room-image">
-            <ion-img
-              src="https://i.pinimg.com/736x/77/5e/98/775e98179f7570baf0c9f9869405bffc.jpg"
-              alt="Deluxe Room">
-            </ion-img>
-          </div>
-
-          <ion-card-content>
-            <h2>Deluxe Room</h2>
-
-            <h3>
-              <ion-icon name="star-outline"></ion-icon>
-              (100 reviews)
-
-            </h3>
-
-            <h1>Details: Premium King-sized Bed, Spacious Bedroom, Sitting / Lounge Area, Air Conditioning, Free High-Speed Wi-Fi, Smart TV, Private Bathroom, Mini Refrigerator, Coffee & Tea Set, Premium Toiletries.<br><br>₱5,000/night</h1>
-
-            <ion-button expand="block" class="book-button">
-              Book Now
-            </ion-button>
-          </ion-card-content>
-
-        </ion-card>
-      </ion-col>
-
-      <ion-col size="6">
-        <ion-card class="room-card">
-
-          <div class="room-image">
-            <ion-img
-              src="https://i.pinimg.com/1200x/28/fd/30/28fd3015980e08b3ff22ac37db31ace4.jpg"
-              alt="Standard Room">
-            </ion-img>
-          </div>
-
-          <ion-card-content>
-            <h2>Standard Room</h2>
-
-            <h3>
-              <ion-icon name="star-outline"></ion-icon>
-              (100 reviews)
-            </h3>
-
-            <h1>Details: Queen-sized Bed, Air Conditioning, Free Wi-Fi, Flat-screen TV, Private Bathroom, Hot & Cold Shower, Fresh Towels, Basic Toiletries, Complimentary Drinking Water.<br><br>₱3,000/night</h1>
-
-            <ion-button expand="block" class="book-button">
-              Book Now
-            </ion-button>
-          </ion-card-content>
-
-        </ion-card>
-      </ion-col>
-
-      <ion-col size="6">
-        <ion-card class="room-card">
-
-          <div class="room-image">
-            <ion-img
-              src="https://i.pinimg.com/736x/c2/f9/47/c2f94744fed4dea1b4b849af97532ee6.jpg"
-              alt="Standard Room">
-            </ion-img>
-          </div>
-
-          <ion-card-content>
-            <h2>Standard Room</h2>
-
-            <h3>
-              <ion-icon name="star-outline"></ion-icon>
-              (100 reviews)
-            </h3>
-
-            <h1>Details: Queen-sized Bed, Air Conditioning, Free Wi-Fi, Flat-screen TV, Private Bathroom, Hot & Cold Shower, Fresh Towels, Basic Toiletries, Complimentary Drinking Water.<br><br>₱3,000/night</h1>
-
-            <ion-button expand="block" class="book-button">
-              Book Now
-            </ion-button>
-          </ion-card-content>
-
-        </ion-card>
-      </ion-col>
-
-      <ion-col size="6">
-        <ion-card class="room-card">
-
-          <div class="room-image">
-            <ion-img
-              src="https://i.pinimg.com/736x/fd/34/59/fd3459b865c789bc1d81cced7b0ae990.jpg"
-              alt="Standard Room">
-            </ion-img>
-          </div>
-
-          <ion-card-content>
-            <h2>Standard Room</h2>
-
-            <h3>
-              <ion-icon name="star-outline"></ion-icon>
-              (100 reviews)
-            </h3>
-
-            <h1>Details: Queen-sized Bed, Air Conditioning, Free Wi-Fi, Flat-screen TV, Private Bathroom, Hot & Cold Shower, Fresh Towels, Basic Toiletries, Complimentary Drinking Water.<br><br>₱3,000/night</h1>
-
-            <ion-button expand="block" class="book-button">
-              Book Now
-            </ion-button>
-          </ion-card-content>
-
-        </ion-card>
       </ion-col>
 
     </ion-row>
+
   </ion-grid>
+
+
+  <!-- NO ROOMS MESSAGE -->
+  <div
+    *ngIf="!isLoading && !errorMessage && rooms.length === 0"
+    style="text-align: center; padding: 30px;">
+
+    <h2>No Rooms Available</h2>
+    <p>There are currently no active rooms to display.</p>
+
+  </div>
 
 </ion-content>

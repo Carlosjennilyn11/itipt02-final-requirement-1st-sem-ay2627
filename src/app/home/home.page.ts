@@ -119,7 +119,8 @@ export class HomePage {
       role: this.activeRole
     };
 
-    this.authService.login(loginData).subscribe({
+    // USE NEW CJK LOGIN API
+    this.authService.authLogin(loginData).subscribe({
 
       next: async (response) => {
 
@@ -127,8 +128,15 @@ export class HomePage {
         this.email = '';
         this.password = '';
 
+        // GET DATABASE ROLE
+        const databaseRole = response.user?.role;
+
+        // CONVERT DATABASE ROLE TO FRONTEND ROLE
+        const frontendRole =
+          databaseRole === 'customer' ? 'user' : databaseRole;
+
         // CHECK ACCOUNT ROLE
-        if (response.user?.role !== this.activeRole) {
+        if (frontendRole !== this.activeRole) {
 
           const alert = await this.alertController.create({
             header: 'Login Failed',
@@ -140,20 +148,25 @@ export class HomePage {
           return;
         }
 
-        // SAVE COMPLETE USER INFORMATION FOR MENU BAR AND PROFILE
+        // GET USER INFORMATION
+        const fullname = response.user?.fullname || '';
+
+        // SAVE COMPLETE USER INFORMATION
         localStorage.setItem('currentUser', JSON.stringify({
           id: response.user?.id || '',
-          first_name: response.user?.first_name || '',
-          last_name: response.user?.last_name || '',
+          fullname: fullname,
+          first_name: fullname,
+          last_name: '',
           username: response.user?.username || '',
           email: response.user?.email || '',
-          role: response.user?.role || ''
+          role: frontendRole,
+          database_role: databaseRole
         }));
 
         // SUCCESSFUL LOGIN
         const alert = await this.alertController.create({
           header: 'Login Successful',
-          message: `Welcome ${response.user?.first_name || 'User'}!`,
+          message: `Welcome ${fullname || 'User'}!`,
           buttons: [
             {
               text: 'Continue',

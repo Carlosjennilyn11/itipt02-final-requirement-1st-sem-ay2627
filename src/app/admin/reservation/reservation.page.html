@@ -1,0 +1,82 @@
+
+<ion-split-pane contentId="main-content" when="md">
+  <ion-menu contentId="main-content" type="overlay">
+    <ion-content>
+      <div class="sidebar-header">
+        <ion-icon name="bed-outline"></ion-icon>
+        <h2>CJK Hotel</h2>
+        <p>Admin Panel</p>
+      </div>
+      <ion-list>
+        <ion-menu-toggle>
+          <ion-item routerLink="/reservation" routerLinkActive="active-menu" [routerLinkActiveOptions]="{ exact: true }">
+            <ion-icon name="calendar-outline" slot="start"></ion-icon>
+            <ion-label>Reservations</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle>
+          <ion-item routerLink="/admin-rooms" routerLinkActive="active-menu" [routerLinkActiveOptions]="{ exact: true }">
+            <ion-icon name="bed-outline" slot="start"></ion-icon>
+            <ion-label>Rooms</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-list>
+      <div class="sidebar-footer">
+        <ion-item>
+          <ion-icon name="log-out-outline" slot="start"></ion-icon>
+          <ion-label>Logout</ion-label>
+        </ion-item>
+      </div>
+    </ion-content>
+  </ion-menu>
+  <div class="ion-page" id="main-content">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Reservations</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="reservations-content">
+      <div class="page-heading">
+        <div>
+          <h1>Reservations</h1>
+          <p>Manage guest reservations and respond to requests.</p>
+        </div>
+      </div>
+      <div class="filter-buttons">
+        <ion-button>All</ion-button>
+        <ion-button fill="outline">Pending</ion-button>
+        <ion-button fill="outline">Confirmed</ion-button>
+        <ion-button fill="outline">Declined</ion-button>
+      </div>
+      <ion-card class="reservation-card">
+        <ion-card-content>
+          <div class="reservation-details">
+            <ion-img src="https://i.pinimg.com/1200x/fe/54/e1/fe54e1ea01ea996bd97d1f2b33907682.jpg"></ion-img>
+            <div class="booking-info">
+              <h2>Booking ID: CJK-10234</h2>
+              <p><ion-icon name="person-outline"></ion-icon> Guest: Maria Santos</p>
+              <p><ion-icon name="bed-outline"></ion-icon> Room: Deluxe Room</p>
+              <p><ion-icon name="calendar-outline"></ion-icon> Check-in: Nov 20, 2026</p>
+              <p><ion-icon name="calendar-outline"></ion-icon> Check-out: Nov 22, 2026</p>
+            </div>
+            <div class="booking-status">
+              <ion-badge color="warning">Pending</ion-badge>
+              <p>Total Price:</p>
+              <h3>₱4,000.00</h3>
+            </div>
+            <div class="booking-actions">
+              <ion-button color="success" size="small">
+                <ion-icon name="checkmark-outline" slot="start"></ion-icon>
+                Accept
+              </ion-button>
+              <ion-button color="danger" size="small">
+                <ion-icon name="close-outline" slot="start"></ion-icon>
+                Decline
+              </ion-button>
+            </div>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </ion-content>
+  </div>
+</ion-split-pane>

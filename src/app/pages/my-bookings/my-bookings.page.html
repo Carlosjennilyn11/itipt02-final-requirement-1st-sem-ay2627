@@ -7,7 +7,11 @@
       <div class="heading-content">
 
         <ion-icon name="calendar-outline"></ion-icon>
-        <img src="https://i.pinimg.com/736x/d6/39/d5/d639d573cee6bc115919000c0338de87.jpg" alt="mm">
+
+        <img
+          src="https://i.pinimg.com/736x/d6/39/d5/d639d573cee6bc115919000c0338de87.jpg"
+          alt="mm">
+
         <div>
           <h1>My Bookings</h1>
           <p>View your reservations, re-book your favorite rooms, and leave a review.</p>
@@ -16,9 +20,13 @@
       </div>
     </div>
 
+    <!-- FILTER BUTTONS -->
     <div class="filter-container">
 
-      <ion-segment value="all" mode="ios">
+      <ion-segment
+        [value]="selectedFilter"
+        (ionChange)="onFilterChange($event)"
+        mode="ios">
 
         <ion-segment-button value="all">
           <ion-label>All Bookings</ion-label>
@@ -43,9 +51,10 @@
 
     </div>
 
+    <!-- BOOKING LIST -->
     <div class="booking-list">
 
-      @for (booking of bookings(); track booking.id) {
+      @for (booking of filteredBookings(); track booking.id) {
 
         <ion-card class="booking-card">
 
@@ -74,7 +83,6 @@
                 <ion-badge
                   [color]="
                     booking.status === 'Confirmed' ? 'success' :
-                    booking.status === 'Completed' ? 'primary' :
                     booking.status === 'Pending' ? 'warning' :
                     'danger'
                   ">
@@ -82,7 +90,6 @@
                   <ion-icon
                     [name]="
                       booking.status === 'Confirmed' ? 'checkmark-circle' :
-                      booking.status === 'Completed' ? 'checkmark-circle' :
                       booking.status === 'Pending' ? 'time' :
                       'close-circle'
                     ">
@@ -136,19 +143,75 @@
 
             </div>
 
-            <div class="booking-actions">
+            <!-- CONFIRMED -->
+            @if (booking.status === 'Confirmed') {
 
-              <ion-button class="rebook-button">
-                <ion-icon name="refresh-outline" slot="start"></ion-icon>
-                Re-Book
-              </ion-button>
+              <div class="booking-actions">
 
-              <ion-button fill="outline" class="review-button">
-                <ion-icon name="star-outline" slot="start"></ion-icon>
-                Review
-              </ion-button>
+                <ion-button class="rebook-button">
+                  <ion-icon name="refresh-outline" slot="start"></ion-icon>
+                  Re-Book
+                </ion-button>
 
-            </div>
+                <ion-button fill="outline" class="review-button">
+                  <ion-icon name="star-outline" slot="start"></ion-icon>
+                  Review
+                </ion-button>
+
+              </div>
+
+            }
+
+            <!-- PENDING -->
+            @else if (booking.status === 'Pending') {
+
+              <div class="booking-actions">
+
+                <div class="pending-notice">
+                  <ion-icon name="time-outline"></ion-icon>
+
+                  <div>
+                    <strong>Waiting for Confirmation</strong>
+                    <p>Your reservation is waiting for admin approval.</p>
+                  </div>
+                </div>
+
+                <ion-button
+                  fill="outline"
+                  color="danger"
+                  class="cancel-button">
+
+                  <ion-icon name="close-circle-outline" slot="start"></ion-icon>
+                  Cancel Booking
+
+                </ion-button>
+
+              </div>
+
+            }
+
+            <!-- CANCELLED -->
+            @else if (booking.status === 'Cancelled') {
+
+              <div class="booking-actions">
+
+                <div class="cancelled-notice">
+                  <ion-icon name="close-circle-outline"></ion-icon>
+
+                  <div>
+                    <strong>Booking Cancelled</strong>
+                    <p>This reservation has been cancelled.</p>
+                  </div>
+                </div>
+
+                <ion-button class="rebook-button">
+                  <ion-icon name="refresh-outline" slot="start"></ion-icon>
+                  Book Again
+                </ion-button>
+
+              </div>
+
+            }
 
           </ion-card-content>
 
@@ -159,7 +222,7 @@
         <div class="empty-bookings">
           <ion-icon name="calendar-outline"></ion-icon>
           <h2>No Bookings Found</h2>
-          <p>You don't have any reservations yet.</p>
+          <p>You don't have any reservations in this category.</p>
         </div>
 
       }

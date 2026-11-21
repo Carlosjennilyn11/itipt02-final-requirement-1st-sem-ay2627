@@ -1,9 +1,13 @@
 
 <ion-app>
 
-  <ion-split-pane contentId="main-content" when="md">
+  <ion-split-pane contentId="main-content" when="md" [disabled]="isAdminRoute">
 
-    <ion-menu contentId="main-content" type="overlay" menuId="main-menu" >
+    <ion-menu
+      *ngIf="!isAdminRoute"
+      contentId="main-content"
+      type="overlay"
+      menuId="main-menu">
 
       <ion-content>
 
@@ -19,7 +23,7 @@
             <ion-icon name="person-circle" class="profile-icon"></ion-icon>
 
             <div class="profile-info">
-             <h3>{{ firstName }} {{ lastName }}</h3>
+              <h3>{{ firstName }} {{ lastName }}</h3>
               <p>Customer</p>
             </div>
 
@@ -70,15 +74,13 @@
 
       </ion-content>
 
-      <!-- LOGOUT BUTTON - ADDED -->
+      <!-- LOGOUT BUTTON -->
       <ion-footer class="menu-footer">
         <ion-toolbar>
-         <ion-button (click)="logout()">
-
-  <ion-icon name="log-out-outline" slot="start"></ion-icon>
-  Logout
-
-</ion-button>
+          <ion-button (click)="logout()">
+            <ion-icon name="log-out-outline" slot="start"></ion-icon>
+            Logout
+          </ion-button>
         </ion-toolbar>
       </ion-footer>
 

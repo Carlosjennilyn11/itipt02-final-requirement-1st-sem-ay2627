@@ -1,3 +1,4 @@
+
 import type { Routes } from '@angular/router';
 
 export const routes: Routes = [
@@ -33,5 +34,13 @@ export const routes: Routes = [
   {
     path: 'signup',
     loadComponent: () => import('./app/signup/signup.page').then((m) => m.SignupPage),
+  },
+  {
+    path: 'reservation',
+    loadComponent: () => import('./admin/reservation/reservation.page').then((m) => m.ReservationPage),
+  },
+  {
+    path: 'admin-rooms',
+    loadComponent: () => import('./admin/rooms/rooms.page').then((m) => m.RoomsPage),
   },
 ];

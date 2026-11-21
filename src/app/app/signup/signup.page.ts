@@ -122,17 +122,16 @@ export class SignupPage implements OnInit {
       return;
     }
 
-    // REGISTRATION DATA
+    // REGISTRATION DATA FOR CJK DATABASE
     const userData = {
-      first_name: this.first_name.trim(),
-      last_name: this.last_name.trim(),
+      fullname: `${this.first_name.trim()} ${this.last_name.trim()}`,
       username: this.username.trim(),
       email: this.email.trim(),
       password: this.password
     };
 
-    // CONNECT TO FASTAPI
-    this.authService.register(userData).subscribe({
+    // CONNECT TO CJK FASTAPI
+    this.authService.authRegister(userData).subscribe({
 
       next: async (response) => {
 
@@ -153,7 +152,7 @@ export class SignupPage implements OnInit {
                 this.confirm_password = '';
 
                 // RETURN TO MAIN LOGIN
-                this.router.navigateByUrl('/home');
+                this.router.navigateByUrl('/main');
 
               }
             }

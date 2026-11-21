@@ -63,6 +63,9 @@ export class AppComponent implements OnInit {
   firstName: string = '';
   lastName: string = '';
 
+  // HIDE GLOBAL MENU ON ADMIN PAGES
+  isAdminRoute: boolean = false;
+
   constructor(private router: Router) {
 
     addIcons({
@@ -84,6 +87,9 @@ export class AppComponent implements OnInit {
     // LOAD USER INFORMATION
     this.loadUser();
 
+    // CHECK CURRENT ROUTE
+    this.checkAdminRoute();
+
     // UPDATE NAME WHEN NAVIGATING
     this.router.events
       .pipe(
@@ -93,7 +99,21 @@ export class AppComponent implements OnInit {
       )
       .subscribe(() => {
         this.loadUser();
+
+        // UPDATE ADMIN ROUTE STATUS
+        this.checkAdminRoute();
       });
+
+  }
+
+  // CHECK IF CURRENT PAGE IS ADMIN
+  checkAdminRoute() {
+
+    const url = this.router.url;
+
+    this.isAdminRoute =
+      url.startsWith('/admin') ||
+      url.startsWith('/reservation');
 
   }
 

@@ -7,7 +7,6 @@
 
 <ion-content [fullscreen]="true" class="home-content">
 
- 
   <div class="welcome-section">
 
     <ion-img
@@ -22,32 +21,29 @@
 
   </div>
 
-  
   <ion-grid>
     <ion-row>
 
-   
       <ion-col size="12" size-md="4">
         <ion-card class="dashboard-card">
           <ion-card-content>
 
             <ion-icon name="bed-outline"></ion-icon>
             <h2>Rooms</h2>
-            <h1></h1>
+            <h1>{{ availableRooms }}</h1>
             <p>Total Rooms</p>
 
           </ion-card-content>
         </ion-card>
       </ion-col>
 
-   
       <ion-col size="12" size-md="4">
         <ion-card class="dashboard-card">
           <ion-card-content>
 
             <ion-icon name="calendar-outline"></ion-icon>
             <h2>Bookings</h2>
-            <h1></h1>
+            <h1>{{ totalBookings }}</h1>
             <p>Total Bookings</p>
 
           </ion-card-content>
@@ -60,8 +56,8 @@
 
             <ion-icon name="star-outline"></ion-icon>
             <h2>Ratings</h2>
-            <h1></h1>
-            <p>Average Rating</p>
+            <h1>{{ averageRating }}</h1>
+            <p>{{ totalReviews }} Reviews</p>
 
           </ion-card-content>
         </ion-card>
