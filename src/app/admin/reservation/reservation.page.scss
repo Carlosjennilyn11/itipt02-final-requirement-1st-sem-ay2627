@@ -40,17 +40,38 @@ ion-menu ion-content {
   --background: #f8f8ed;
 }
 
-ion-menu ion-list {
-  background: transparent;
-  padding: 20px 12px;
+ion-menu ion-content::part(scroll) {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
 }
 
-ion-menu ion-item {
+ion-menu ion-list {
+  display: block;
+  background: transparent;
+  padding: 20px 12px;
+  flex: 1;
+}
+
+ion-menu ion-list ion-menu-toggle {
+  display: block;
+  visibility: visible;
+}
+
+ion-menu ion-list ion-item {
+  display: flex;
+  visibility: visible;
+  opacity: 1;
+  min-height: 45px;
   --background: transparent;
   --color: #173baf;
   --border-radius: 10px;
   margin-bottom: 10px;
   font-size: 14px;
+}
+
+ion-menu ion-list ion-item ion-label {
+  color: #173baf;
 }
 
 ion-menu ion-item ion-icon {
@@ -62,12 +83,13 @@ ion-menu ion-item.active-menu {
   --color: white;
 }
 
-ion-menu ion-item.active-menu ion-icon {
+ion-menu ion-item.active-menu ion-icon,
+ion-menu ion-item.active-menu ion-label {
   color: white;
 }
 
 .sidebar-footer {
-  margin-top: 180px;
+  margin-top: auto;
   padding: 10px;
 }
 

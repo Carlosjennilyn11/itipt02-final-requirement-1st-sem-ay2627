@@ -1,0 +1,215 @@
+
+ion-split-pane {
+  --side-width: 230px;
+  --side-min-width: 230px;
+  --side-max-width: 230px;
+}
+
+/* SIDEBAR */
+ion-menu {
+  --background: #f8f8ed;
+  --width: 230px;
+}
+
+.sidebar-header {
+  height: 130px;
+  background: linear-gradient(135deg, #173baf, #102d91);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar-header ion-icon {
+  font-size: 32px;
+}
+
+.sidebar-header h2 {
+  font-size: 19px;
+  font-weight: bold;
+  margin: 6px 0 2px;
+}
+
+.sidebar-header p {
+  font-size: 12px;
+  margin: 0;
+  opacity: 0.8;
+}
+
+ion-menu ion-content {
+  --background: #f8f8ed;
+}
+
+ion-menu ion-list {
+  background: transparent;
+  padding: 20px 12px;
+}
+
+ion-menu ion-menu-toggle {
+  display: block;
+}
+
+ion-menu ion-item {
+  --background: transparent;
+  --color: #173baf;
+  --border-radius: 10px;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+ion-menu ion-item ion-icon {
+  color: #173baf;
+}
+
+ion-menu ion-item.active-menu {
+  --background: #173baf;
+  --color: white;
+}
+
+ion-menu ion-item.active-menu ion-icon,
+ion-menu ion-item.active-menu ion-label {
+  color: white;
+}
+
+/* LOGOUT */
+.sidebar-footer {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  padding: 10px;
+}
+
+.sidebar-footer ion-item {
+  --background: transparent;
+  --color: #173baf;
+  --border-radius: 25px;
+  --border-color: #173baf;
+  --border-style: solid;
+  --border-width: 1px;
+}
+
+/* MAIN CONTENT */
+.ion-page {
+  min-width: 0;
+}
+
+.rooms-admin-content {
+  --background: #f4f5fa;
+}
+
+/* PAGE HEADING */
+.page-heading {
+  padding: 25px;
+}
+
+.page-heading h1 {
+  color: #173baf;
+  font-size: 26px;
+  font-weight: bold;
+  margin: 0 0 5px;
+}
+
+.page-heading p {
+  color: #777;
+  font-size: 14px;
+  margin: 0;
+}
+
+/* ADD ROOM BUTTON */
+.add-room-container {
+  padding: 0 20px 15px;
+}
+
+.add-room-button {
+  --background: #173baf;
+  --border-radius: 10px;
+  font-weight: bold;
+  height: 45px;
+}
+
+/* ROOM CARD */
+.rooms-grid {
+  padding: 5px 15px 20px;
+}
+
+.room-card {
+  margin: 5px;
+  border-radius: 15px;
+  background: white;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+.room-card ion-img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.room-card ion-card-content {
+  padding: 16px;
+}
+
+.room-card h2 {
+  color: #173baf;
+  font-size: 21px;
+  font-weight: bold;
+  margin: 0 0 10px;
+}
+
+.capacity {
+  color: #666;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 14px;
+}
+
+.capacity ion-icon {
+  color: #173baf;
+  font-size: 18px;
+}
+
+.room-card h3 {
+  color: #173baf;
+  font-size: 19px;
+  font-weight: bold;
+  margin: 12px 0;
+}
+
+.room-card ion-badge {
+  padding: 7px 12px;
+  border-radius: 20px;
+}
+
+/* EDIT AND REMOVE BUTTONS */
+.room-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 18px;
+  padding-top: 12px;
+  border-top: 1px solid #eee;
+}
+
+.room-actions ion-button {
+  flex: 1;
+  font-size: 12px;
+  --border-radius: 9px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 767px) {
+  .page-heading {
+    padding: 20px 15px;
+  }
+
+  .rooms-grid {
+    padding: 5px 10px 20px;
+  }
+
+  .room-card ion-img {
+    height: 200px;
+  }
+}

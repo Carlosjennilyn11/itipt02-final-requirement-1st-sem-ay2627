@@ -7,7 +7,6 @@
 
 <ion-content [fullscreen]="true" class="rooms-content">
 
-  <!-- WELCOME BANNER -->
   <div class="welcome-section">
 
     <ion-img
@@ -23,13 +22,11 @@
   </div>
 
 
-  <!-- LOADING MESSAGE -->
   <div *ngIf="isLoading">
     <p style="text-align: center;">Loading rooms...</p>
   </div>
 
 
-  <!-- ERROR MESSAGE -->
   <div *ngIf="errorMessage">
     <p style="text-align: center; color: red;">
       {{ errorMessage }}
@@ -41,12 +38,10 @@
   </div>
 
 
-  <!-- ROOMS GRID -->
   <ion-grid class="rooms-grid" *ngIf="!isLoading && !errorMessage">
 
     <ion-row>
 
-      <!-- DISPLAY ROOMS FROM DATABASE -->
       <ion-col size="6" *ngFor="let room of rooms">
 
         <ion-card class="room-card">
@@ -62,15 +57,15 @@
 
           <ion-card-content>
 
-            <!-- ROOM NAME -->
+          
             <h2>{{ room.room_name }}</h2>
 
-            <!-- ROOM AVAILABILITY -->
+           
             <h3>
               {{ room.availability }}
             </h3>
 
-            <!-- ROOM DETAILS -->
+          
             <h1>
               Details: {{ room.description }}
 
@@ -83,7 +78,7 @@
               ₱{{ room.price }}/day & night
             </h1>
 
-            <!-- BOOK BUTTON -->
+
             <ion-button
               expand="block"
               class="book-button"
@@ -104,7 +99,6 @@
   </ion-grid>
 
 
-  <!-- NO ROOMS MESSAGE -->
   <div
     *ngIf="!isLoading && !errorMessage && rooms.length === 0"
     style="text-align: center; padding: 30px;">
