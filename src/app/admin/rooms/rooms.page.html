@@ -32,49 +32,58 @@
 
   <div class="ion-page" id="main-content">
     <ion-content class="rooms-admin-content">
-      <div class="page-heading">
-        <div>
-          <ion-img src="https://i.pinimg.com/736x/d6/39/d5/d639d573cee6bc115919000c0338de87.jpg"></ion-img>
-          <h1>Manage Rooms</h1>
-          <p>Add, edit, and manage hotel rooms.</p>
+
+      <div class="rooms-container">
+
+        <div class="page-heading room-banner">
+          <div class="banner-content">
+            <ion-img src="https://i.pinimg.com/736x/d6/39/d5/d639d573cee6bc115919000c0338de87.jpg"></ion-img>
+            <h1>Manage Rooms</h1>
+            <p>Add, edit, and manage hotel rooms.</p>
+          </div>
         </div>
+
+        <div class="add-room-container">
+          <ion-button class="add-room-button">
+            <ion-icon name="add-circle-outline" slot="start"></ion-icon>
+            Add New Room
+          </ion-button>
+        </div>
+
+        <ion-grid class="rooms-grid">
+          <ion-row>
+
+            <ion-col size="12" size-md="6" size-lg="6">
+              <ion-card class="room-card">
+                <ion-img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=900" alt="Deluxe Room"></ion-img>
+                <ion-card-content>
+                  <h2>Deluxe Room</h2>
+                  <p class="capacity">
+                    <ion-icon name="people-outline"></ion-icon>
+                    2 Guests
+                  </p>
+                  <h3>₱2,000 / night</h3>
+                  <ion-badge color="success">Available</ion-badge>
+                  <div class="room-actions">
+                    <ion-button fill="outline" color="primary">
+                      <ion-icon name="create-outline" slot="start"></ion-icon>
+                      Edit
+                    </ion-button>
+                    <ion-button fill="outline" color="danger">
+                      <ion-icon name="trash-outline" slot="start"></ion-icon>
+                      Remove
+                    </ion-button>
+                  </div>
+                </ion-card-content>
+              </ion-card>
+            </ion-col>
+
+            
+          </ion-row>
+        </ion-grid>
+
       </div>
 
-      <div class="add-room-container">
-        <ion-button class="add-room-button">
-          <ion-icon name="add-circle-outline" slot="start"></ion-icon>
-          Add New Room
-        </ion-button>
-      </div>
-
-      <ion-grid class="rooms-grid">
-        <ion-row>
-          <ion-col size="12" size-md="6" size-lg="6">
-            <ion-card class="room-card">
-              <ion-img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=900" alt="Deluxe Room"></ion-img>
-              <ion-card-content>
-                <h2>Deluxe Room</h2>
-                <p class="capacity">
-                  <ion-icon name="people-outline"></ion-icon>
-                  2 Guests
-                </p>
-                <h3>₱2,000 / night</h3>
-                <ion-badge color="success">Available</ion-badge>
-                <div class="room-actions">
-                  <ion-button fill="outline" color="primary">
-                    <ion-icon name="create-outline" slot="start"></ion-icon>
-                    Edit
-                  </ion-button>
-                  <ion-button fill="outline" color="danger">
-                    <ion-icon name="trash-outline" slot="start"></ion-icon>
-                    Remove
-                  </ion-button>
-                </div>
-              </ion-card-content>
-            </ion-card>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
     </ion-content>
   </div>
 </ion-split-pane>

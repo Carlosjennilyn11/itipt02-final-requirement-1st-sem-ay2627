@@ -105,102 +105,328 @@ ion-menu ion-item.active-menu ion-label {
 }
 
 .reservations-content {
-  --background: #f4f5fa;
+  --background: #f4f5ed;
+}
+
+.reservations-container {
+  width: 100%;
+  max-width: 1400px;
+  padding: 25px 30px;
+  margin: 0 auto;
 }
 
 .page-heading {
-  padding: 25px;
+  padding: 0;
 }
 
-.page-heading h1 {
-  color: #173baf;
-  font-size: 24px;
-  font-weight: bold;
-  margin: 0 0 5px;
+.reservation-banner {
+  position: relative;
+  width: 100%;
+  min-height: 125px;
+  overflow: hidden;
+  border-radius: 12px;
+  background: linear-gradient(120deg, #102c85, #1748b9, #071e69);
+  padding: 25px 35px;
+  margin-bottom: 22px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(15, 43, 110, 0.18);
 }
 
-.page-heading p {
-  color: #777;
+.banner-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+
+.banner-content h1 {
+  color: #ffffff;
+  font-size: 27px;
+  font-weight: 700;
+  margin: 0 0 7px;
+}
+
+.banner-content p {
+  color: #dce7ff;
   font-size: 13px;
   margin: 0;
 }
 
+.banner-content ion-img {
+  position: absolute;
+  width: 230px;
+  height: 125px;
+  top: -25px;
+  right: -35px;
+  opacity: 0.75;
+}
+
+.banner-content ion-img::part(image) {
+  object-fit: cover;
+  object-position: center;
+  mask-image: linear-gradient(to right, transparent, black 35%);
+}
+
 .filter-buttons {
   display: flex;
+  align-items: center;
   flex-wrap: wrap;
-  gap: 8px;
-  padding: 10px 20px;
+  gap: 12px;
+  padding: 0;
+  margin: 20px 0;
 }
 
 .filter-buttons ion-button {
-  --border-radius: 20px;
-  font-size: 11px;
+  --border-radius: 25px;
+  --padding-start: 25px;
+  --padding-end: 25px;
+  --padding-top: 5px;
+  --padding-bottom: 5px;
+  --box-shadow: none;
+  height: 36px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: none;
+}
+
+.filter-buttons ion-button:not(.filter-active) {
+  --color: #24345e;
+  --border-color: #d6dce8;
+  --background: #ffffff;
+}
+
+.filter-buttons ion-button.filter-active {
+  --background: #153ca5;
+  --color: #ffffff;
 }
 
 .reservation-card {
-  margin: 15px 20px;
-  border-radius: 12px;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.07);
+  margin: 0 0 15px;
+  width: 100%;
+  border-radius: 13px;
+  background: #ffffff;
+  box-shadow: 0 3px 12px rgba(20, 40, 90, 0.08);
+  border: 1px solid #edf0f5;
+}
+
+.reservation-card ion-card-content {
+  padding: 15px 18px;
 }
 
 .reservation-details {
-  display: flex;
+  display: grid;
+  grid-template-columns: 120px minmax(230px, 1fr) 125px 105px;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 15px;
+  gap: 16px;
 }
 
 .reservation-details ion-img {
-  width: 115px;
-  height: 90px;
-  object-fit: cover;
-  border-radius: 8px;
+  width: 120px;
+  height: 88px;
+  border-radius: 9px;
   overflow: hidden;
 }
 
+.reservation-details ion-img::part(image) {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .booking-info {
-  flex: 1;
-  min-width: 180px;
+  min-width: 0;
 }
 
 .booking-info h2 {
-  color: #173baf;
-  font-size: 14px;
-  font-weight: bold;
+  color: #142d68;
+  font-size: 13px;
+  font-weight: 700;
+  margin: 0 0 8px;
 }
 
 .booking-info p {
-  color: #555;
-  font-size: 11px;
+  color: #42516f;
+  font-size: 10px;
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 7px;
+  margin: 5px 0;
+  line-height: 1.4;
 }
 
 .booking-info p ion-icon {
-  color: #173baf;
+  color: #193f9e;
+  font-size: 13px;
+  flex-shrink: 0;
 }
 
 .booking-status {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.booking-status ion-badge {
+  font-size: 10px;
+  font-weight: 600;
+  border-radius: 20px;
+  padding: 5px 10px;
+  margin-bottom: 10px;
 }
 
 .booking-status p {
-  font-size: 11px;
+  font-size: 10px;
+  color: #69758d;
+  margin: 0 0 3px;
 }
 
 .booking-status h3 {
-  color: #173baf;
+  color: #1743a8;
   font-size: 14px;
-  font-weight: bold;
+  font-weight: 800;
+  margin: 0;
 }
 
 .booking-actions {
   display: flex;
   flex-direction: column;
+  gap: 6px;
+  align-items: stretch;
 }
 
 .booking-actions ion-button {
   --border-radius: 20px;
+  --box-shadow: none;
+  height: 29px;
+  margin: 0;
   font-size: 10px;
+  font-weight: 600;
+  text-transform: none;
+}
+
+.booking-actions ion-button[color="success"] {
+  --background: #17633c;
+  --background-hover: #104d2e;
+  --color: #ffffff;
+}
+
+.booking-actions ion-button[color="danger"] {
+  --background: #a62c3c;
+  --background-hover: #8d2030;
+  --color: #ffffff;
+}
+
+@media (max-width: 900px) {
+  .reservations-container {
+    padding: 20px;
+  }
+
+  .reservation-details {
+    grid-template-columns: 100px 1fr 110px;
+    gap: 12px;
+  }
+
+  .reservation-details ion-img {
+    width: 100px;
+    height: 80px;
+  }
+
+  .booking-actions {
+    grid-column: 2 / 4;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+
+  .booking-actions ion-button {
+    min-width: 90px;
+  }
+}
+
+@media (max-width: 600px) {
+  .reservations-container {
+    padding: 15px;
+  }
+
+  .reservation-banner {
+    min-height: 110px;
+    padding: 20px;
+  }
+
+  .banner-content h1 {
+    font-size: 22px;
+  }
+
+  .banner-content p {
+    font-size: 11px;
+    max-width: 190px;
+  }
+
+  .banner-content ion-img {
+    width: 130px;
+    height: 110px;
+    top: -20px;
+    right: -20px;
+  }
+
+  .filter-buttons {
+    gap: 6px;
+  }
+
+  .filter-buttons ion-button {
+    --padding-start: 15px;
+    --padding-end: 15px;
+    font-size: 10px;
+  }
+
+  .reservation-card ion-card-content {
+    padding: 12px;
+  }
+
+  .reservation-details {
+    grid-template-columns: 85px 1fr;
+    gap: 12px;
+  }
+
+  .reservation-details ion-img {
+    width: 85px;
+    height: 75px;
+  }
+
+  .booking-info h2 {
+    font-size: 11px;
+  }
+
+  .booking-info p {
+    font-size: 9px;
+  }
+
+  .booking-status {
+    grid-column: 2;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .booking-status ion-badge {
+    margin: 0;
+  }
+
+  .booking-status p {
+    margin: 0;
+  }
+
+  .booking-status h3 {
+    font-size: 12px;
+  }
+
+  .booking-actions {
+    grid-column: 1 / 3;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+
+  .booking-actions ion-button {
+    flex: 1;
+  }
 }
