@@ -124,10 +124,6 @@ export class HomePage {
 
       next: async (response) => {
 
-        // CLEAR INPUT FIELDS
-        this.email = '';
-        this.password = '';
-
         // GET DATABASE ROLE
         const databaseRole = response.user?.role;
 
@@ -163,7 +159,84 @@ export class HomePage {
           database_role: databaseRole
         }));
 
-        // SUCCESSFUL LOGIN
+        // ==========================================
+        // ADMIN: GENERATE AND SAVE ADMIN TOKEN
+        // ==========================================
+        if (this.activeRole === 'admin') {
+
+          this.authService.createAdminToken({
+            email: this.email,
+            password: this.password,
+            role: 'admin'
+          }).subscribe({
+
+            next: async (tokenResponse) => {
+
+              if (!tokenResponse.access_token) {
+
+                const alert = await this.alertController.create({
+                  header: 'Login Failed',
+                  message: 'Admin token was not returned by the server.',
+                  buttons: ['OK']
+                });
+
+                await alert.present();
+                return;
+              }
+
+              // SAVE ADMIN TOKEN
+              localStorage.setItem(
+                'adminToken',
+                tokenResponse.access_token
+              );
+
+              // CLEAR INPUT FIELDS
+              this.email = '';
+              this.password = '';
+
+              // ADMIN SUCCESS
+              const alert = await this.alertController.create({
+                header: 'Login Successful',
+                message: `Welcome ${fullname || 'Admin'}!`,
+                buttons: [
+                  {
+                    text: 'Continue',
+                    handler: () => {
+                      this.router.navigateByUrl('/reservation');
+                    }
+                  }
+                ]
+              });
+
+              await alert.present();
+
+            },
+
+            error: async (error) => {
+
+              localStorage.removeItem('adminToken');
+
+              const alert = await this.alertController.create({
+                header: 'Admin Authentication Failed',
+                message: error.error?.detail ||
+                         'Unable to generate admin token.',
+                buttons: ['OK']
+              });
+
+              await alert.present();
+
+            }
+
+          });
+
+          return;
+        }
+
+        // CLEAR INPUT FIELDS
+        this.email = '';
+        this.password = '';
+
+        // USER SUCCESSFUL LOGIN
         const alert = await this.alertController.create({
           header: 'Login Successful',
           message: `Welcome ${fullname || 'User'}!`,
@@ -171,17 +244,7 @@ export class HomePage {
             {
               text: 'Continue',
               handler: () => {
-
-                // USER DASHBOARD
-                if (this.activeRole === 'user') {
-                  this.router.navigateByUrl('/home');
-                }
-
-                // ADMIN DASHBOARD
-                else if (this.activeRole === 'admin') {
-                  this.router.navigateByUrl('/admin-home');
-                }
-
+                this.router.navigateByUrl('/home');
               }
             }
           ]

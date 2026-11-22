@@ -1,6 +1,6 @@
 
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -45,7 +45,57 @@ export class AuthService {
   }
 
   // ==========================================
-  // ADMIN: GET ALL BOOKINGS
+  // ADMIN: CREATE ADMIN TOKEN
+  // ==========================================
+  createAdminToken(data: any): Observable<any> {
+    return this.http.post(
+      `${this.apiUrl}/auth/admin-token`,
+      data
+    );
+  }
+
+  // ==========================================
+  // ADMIN: GET AUTHORIZATION HEADERS
+  // ==========================================
+  private getAdminHeaders(): HttpHeaders {
+    const token = localStorage.getItem('adminToken');
+
+    return new HttpHeaders({
+      Authorization: `Bearer ${token || ''}`
+    });
+  }
+
+  // ==========================================
+  // ADMIN: GET ALL RESERVATIONS
+  // ==========================================
+  getAdminReservations(): Observable<any> {
+    return this.http.get<any>(
+      `${this.apiUrl}/api/admin/reservations`,
+      {
+        headers: this.getAdminHeaders()
+      }
+    );
+  }
+
+  // ==========================================
+  // ADMIN: UPDATE RESERVATION STATUS
+  // ==========================================
+  updateAdminReservationStatus(
+    bookingId: number,
+    status: 'Confirmed' | 'Declined'
+  ): Observable<any> {
+
+    return this.http.put(
+      `${this.apiUrl}/api/admin/reservations/${bookingId}/status`,
+      { status: status },
+      {
+        headers: this.getAdminHeaders()
+      }
+    );
+  }
+
+  // ==========================================
+  // ADMIN: GET ALL BOOKINGS (OLD METHOD)
   // ==========================================
   getAllBookings(): Observable<any[]> {
     return this.http.get<any[]>(
@@ -54,7 +104,7 @@ export class AuthService {
   }
 
   // ==========================================
-  // ADMIN: UPDATE BOOKING STATUS
+  // ADMIN: UPDATE BOOKING STATUS (OLD METHOD)
   // ==========================================
   updateBookingStatus(
     bookingId: string,
@@ -66,6 +116,60 @@ export class AuthService {
       null,
       {
         params: { status }
+      }
+    );
+  }
+
+  // ==========================================
+  // ADMIN ROOMS: GET ALL ROOMS
+  // ==========================================
+  getAdminRooms(): Observable<any> {
+    return this.http.get<any>(
+      `${this.apiUrl}/api/admin/rooms`,
+      {
+        headers: this.getAdminHeaders()
+      }
+    );
+  }
+
+  // ==========================================
+  // ADMIN ROOMS: ADD NEW ROOM
+  // ==========================================
+  addAdminRoom(data: any): Observable<any> {
+    return this.http.post(
+      `${this.apiUrl}/api/admin/rooms`,
+      data,
+      {
+        headers: this.getAdminHeaders()
+      }
+    );
+  }
+
+  // ==========================================
+  // ADMIN ROOMS: EDIT ROOM
+  // ==========================================
+  updateAdminRoom(
+    roomId: number,
+    data: any
+  ): Observable<any> {
+
+    return this.http.put(
+      `${this.apiUrl}/api/admin/rooms/${roomId}`,
+      data,
+      {
+        headers: this.getAdminHeaders()
+      }
+    );
+  }
+
+  // ==========================================
+  // ADMIN ROOMS: REMOVE ROOM
+  // ==========================================
+  removeAdminRoom(roomId: number): Observable<any> {
+    return this.http.delete(
+      `${this.apiUrl}/api/admin/rooms/${roomId}`,
+      {
+        headers: this.getAdminHeaders()
       }
     );
   }
@@ -89,11 +193,46 @@ export class AuthService {
   }
 
   // ==========================================
-  // ROOMS: GET ALL ACTIVE ROOMS
+  // ROOMS: GET ALL ACTIVE ROOMS (USER)
   // ==========================================
   getRooms(): Observable<any> {
     return this.http.get<any>(
       `${this.apiUrl}/api/rooms`
+    );
+  }
+
+  // ==========================================
+  // CUSTOMER: CREATE BOOKING
+  // ==========================================
+  createBooking(data: any): Observable<any> {
+    return this.http.post<any>(
+      `${this.apiUrl}/api/bookings`,
+      data
+    );
+  }
+
+  // ==========================================
+  // CUSTOMER: GET MY BOOKINGS
+  // ==========================================
+  getMyBookings(userId: number): Observable<any> {
+    return this.http.get<any>(
+      `${this.apiUrl}/api/my-bookings/${userId}`
+    );
+  }
+
+  // ==========================================
+  // CUSTOMER: CANCEL BOOKING
+  // ==========================================
+  cancelBooking(
+    bookingId: number,
+    userId: number
+  ): Observable<any> {
+
+    return this.http.put(
+      `${this.apiUrl}/api/bookings/${bookingId}/cancel`,
+      {
+        user_id: userId
+      }
     );
   }
 

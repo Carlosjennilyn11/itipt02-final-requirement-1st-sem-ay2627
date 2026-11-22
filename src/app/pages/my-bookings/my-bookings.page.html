@@ -20,8 +20,26 @@
       </div>
     </div>
 
-    <!-- FILTER BUTTONS -->
-    <div class="filter-container">
+  
+    <div *ngIf="isLoading" style="text-align: center; padding: 20px;">
+      <p>Loading your bookings...</p>
+    </div>
+
+
+    <div *ngIf="errorMessage" style="text-align: center; padding: 20px;">
+
+      <p style="color: red;">
+        {{ errorMessage }}
+      </p>
+
+      <ion-button expand="block" (click)="loadMyBookings()">
+        Try Again
+      </ion-button>
+
+    </div>
+
+
+    <div class="filter-container" *ngIf="!isLoading && !errorMessage">
 
       <ion-segment
         [value]="selectedFilter"
@@ -51,8 +69,7 @@
 
     </div>
 
-    <!-- BOOKING LIST -->
-    <div class="booking-list">
+    <div class="booking-list" *ngIf="!isLoading && !errorMessage">
 
       @for (booking of filteredBookings(); track booking.id) {
 
@@ -143,7 +160,6 @@
 
             </div>
 
-            <!-- CONFIRMED -->
             @if (booking.status === 'Confirmed') {
 
               <div class="booking-actions">
@@ -162,7 +178,6 @@
 
             }
 
-            <!-- PENDING -->
             @else if (booking.status === 'Pending') {
 
               <div class="booking-actions">
@@ -179,7 +194,8 @@
                 <ion-button
                   fill="outline"
                   color="danger"
-                  class="cancel-button">
+                  class="cancel-button"
+                  (click)="cancelBooking(booking)">
 
                   <ion-icon name="close-circle-outline" slot="start"></ion-icon>
                   Cancel Booking
@@ -190,7 +206,7 @@
 
             }
 
-            <!-- CANCELLED -->
+
             @else if (booking.status === 'Cancelled') {
 
               <div class="booking-actions">

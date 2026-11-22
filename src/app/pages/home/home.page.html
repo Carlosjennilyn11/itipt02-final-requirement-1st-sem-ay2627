@@ -7,8 +7,8 @@
 
 <ion-content [fullscreen]="true" class="home-content">
 
-  <div class="welcome-section">
 
+  <div class="welcome-section">
     <ion-img
       src="https://i.pinimg.com/1200x/fe/54/e1/fe54e1ea01ea996bd97d1f2b33907682.jpg"
       alt="Welcome to CJK">
@@ -18,47 +18,29 @@
       <h2>Welcome to CJK!</h2>
       <p>Where Elegance Meets Exceptional Comfort.</p>
     </div>
-
   </div>
 
   <ion-grid>
     <ion-row>
 
-      <ion-col size="12" size-md="4">
+      <ion-col size="12" size-md="6">
         <ion-card class="dashboard-card">
           <ion-card-content>
-
             <ion-icon name="bed-outline"></ion-icon>
             <h2>Rooms</h2>
             <h1>{{ availableRooms }}</h1>
-            <p>Total Rooms</p>
-
+            <p>Available Rooms</p>
           </ion-card-content>
         </ion-card>
       </ion-col>
 
-      <ion-col size="12" size-md="4">
+      <ion-col size="12" size-md="6">
         <ion-card class="dashboard-card">
           <ion-card-content>
-
             <ion-icon name="calendar-outline"></ion-icon>
             <h2>Bookings</h2>
             <h1>{{ totalBookings }}</h1>
-            <p>Total Bookings</p>
-
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-
-      <ion-col size="12" size-md="4">
-        <ion-card class="dashboard-card">
-          <ion-card-content>
-
-            <ion-icon name="star-outline"></ion-icon>
-            <h2>Ratings</h2>
-            <h1>{{ averageRating }}</h1>
-            <p>{{ totalReviews }} Reviews</p>
-
+            <p>My Total Bookings</p>
           </ion-card-content>
         </ion-card>
       </ion-col>
@@ -66,58 +48,76 @@
     </ion-row>
   </ion-grid>
 
+
   <ion-card class="featured-card">
 
     <ion-card-header class="featured-header">
+      <ion-card-title>Featured Room</ion-card-title>
 
-      <ion-card-title>Featured Rooms</ion-card-title>
-
-      <ion-button fill="clear">
+      <ion-button fill="clear" routerLink="/rooms">
         View All
         <ion-icon name="arrow-forward-outline" slot="end"></ion-icon>
       </ion-button>
-
     </ion-card-header>
 
     <ion-card-content>
 
-      <div class="room-image">
-
-        <ion-img
-          src="https://i.pinimg.com/736x/b0/9a/2c/b09a2c008027a264692e4ac0364361d1.jpg"
-          alt="Deluxe Room">
-        </ion-img>
-
-        <span class="popular-badge">
-          <ion-icon name="flame-outline"></ion-icon>
-          Popular
-        </span>
-
+      <div *ngIf="isLoadingRooms" style="text-align: center;">
+        <p>Loading featured room...</p>
       </div>
 
-      <div class="room-details">
 
-        <div class="room-info">
+      <div *ngIf="!isLoadingRooms && featuredRooms.length > 0">
 
-          <h1>Deluxe Room</h1>
+        <div class="room-image">
+          <ion-img
+            [src]="featuredRooms[0].image"
+            [alt]="featuredRooms[0].room_name">
+          </ion-img>
 
-          <h3>
-            <ion-icon name="star-outline"></ion-icon>
-            (250 reviews)
-          </h3>
+          <span class="popular-badge">
+            <ion-icon name="flame-outline"></ion-icon>
+            Popular
+          </span>
+        </div>
 
-          <h1 class="room-price">₱3,000/night</h1>
+        <div class="room-details">
+
+          <div class="room-info">
+            <h1>{{ featuredRooms[0].room_name }}</h1>
+
+            <h3>
+              <ion-icon name="bed-outline"></ion-icon>
+              {{ featuredRooms[0].capacity }} Guests
+            </h3>
+
+            <p>{{ featuredRooms[0].description }}</p>
+
+            <h1 class="room-price">
+              ₱{{ featuredRooms[0].price }}/night
+            </h1>
+          </div>
+
+          <ion-button
+            class="book-button"
+            (click)="bookRoom(featuredRooms[0])">
+            Book Now
+          </ion-button>
 
         </div>
 
-        <ion-button class="book-button">
-          Book Now
-        </ion-button>
+      </div>
+
+      <div
+        *ngIf="!isLoadingRooms && featuredRooms.length === 0"
+        style="text-align: center; padding: 20px;">
+
+        <h2>No Rooms Available</h2>
+        <p>There are currently no rooms to display.</p>
 
       </div>
 
     </ion-card-content>
-
   </ion-card>
 
 </ion-content>

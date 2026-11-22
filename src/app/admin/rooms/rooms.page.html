@@ -2,88 +2,202 @@
 <ion-split-pane contentId="main-content" when="md">
   <ion-menu contentId="main-content" type="overlay">
     <ion-content>
+
       <div class="sidebar-header">
         <ion-icon name="bed-outline"></ion-icon>
         <h2>CJK Hotel</h2>
         <p>Admin Panel</p>
       </div>
+
       <ion-list>
+
         <ion-menu-toggle>
-          <ion-item routerLink="/reservation">
+          <ion-item
+            routerLink="/reservation"
+            routerLinkActive="active-menu"
+            [routerLinkActiveOptions]="{ exact: true }">
+
             <ion-icon name="calendar-outline" slot="start"></ion-icon>
             <ion-label>Reservations</ion-label>
+
           </ion-item>
         </ion-menu-toggle>
+
         <ion-menu-toggle>
-          <ion-item routerLink="/admin-rooms" routerLinkActive="active-menu" [routerLinkActiveOptions]="{ exact: true }">
+          <ion-item
+            routerLink="/admin-rooms"
+            routerLinkActive="active-menu"
+            [routerLinkActiveOptions]="{ exact: true }">
+
             <ion-icon name="bed-outline" slot="start"></ion-icon>
             <ion-label>Rooms</ion-label>
+
           </ion-item>
         </ion-menu-toggle>
+
       </ion-list>
+
       <div class="sidebar-footer">
-        <ion-item>
-          <ion-icon name="log-out-outline" slot="start"></ion-icon>
-          <ion-label>Logout</ion-label>
-        </ion-item>
+        <ion-menu-toggle>
+          <ion-item button (click)="logout()">
+            <ion-icon name="log-out-outline" slot="start"></ion-icon>
+            <ion-label>Logout</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
       </div>
+
     </ion-content>
   </ion-menu>
 
   <div class="ion-page" id="main-content">
+
     <ion-content class="rooms-admin-content">
 
       <div class="rooms-container">
 
         <div class="page-heading room-banner">
+
           <div class="banner-content">
-            <ion-img src="https://i.pinimg.com/736x/d6/39/d5/d639d573cee6bc115919000c0338de87.jpg"></ion-img>
+
+            <ion-img
+              src="https://i.pinimg.com/736x/d6/39/d5/d639d573cee6bc115919000c0338de87.jpg">
+            </ion-img>
+
             <h1>Manage Rooms</h1>
+
             <p>Add, edit, and manage hotel rooms.</p>
+
           </div>
+
         </div>
+
 
         <div class="add-room-container">
-          <ion-button class="add-room-button">
-            <ion-icon name="add-circle-outline" slot="start"></ion-icon>
+
+          <ion-button
+            class="add-room-button"
+            (click)="addRoom()">
+
+            <ion-icon
+              name="add-circle-outline"
+              slot="start">
+            </ion-icon>
+
             Add New Room
+
           </ion-button>
+
         </div>
 
+
+        <div *ngIf="isLoading" class="empty-message">
+          <p>Loading rooms...</p>
+        </div>
+
+
+        <div *ngIf="errorMessage" class="empty-message">
+
+          <p>{{ errorMessage }}</p>
+
+          <ion-button (click)="loadRooms()">
+            Try Again
+          </ion-button>
+
+        </div>
+
+
         <ion-grid class="rooms-grid">
+
           <ion-row>
 
-            <ion-col size="12" size-md="6" size-lg="6">
+            <ion-col
+              size="12"
+              size-md="6"
+              size-lg="6"
+              *ngFor="let room of rooms">
+
               <ion-card class="room-card">
-                <ion-img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=900" alt="Deluxe Room"></ion-img>
+
+
+                <ion-img
+                  [src]="room.image"
+                  [alt]="room.room_name">
+                </ion-img>
+
                 <ion-card-content>
-                  <h2>Deluxe Room</h2>
+
+
+                  <h2>{{ room.room_name }}</h2>
+
+
+                  <p>{{ room.description }}</p>
+
+
                   <p class="capacity">
+
                     <ion-icon name="people-outline"></ion-icon>
-                    2 Guests
+
+                    {{ room.capacity }} Guests
+
                   </p>
-                  <h3>₱2,000 / night</h3>
-                  <ion-badge color="success">Available</ion-badge>
+
+
+                  <h3>
+                    {{ room.price | currency:'PHP':'symbol':'1.2-2' }} / night
+                  </h3>
+
+
+                  <ion-badge color="success">
+                    Available
+                  </ion-badge>
+
+
                   <div class="room-actions">
-                    <ion-button fill="outline" color="primary">
-                      <ion-icon name="create-outline" slot="start"></ion-icon>
+
+                    <ion-button
+                      fill="outline"
+                      color="primary"
+                      (click)="editRoom(room)">
+
+                      <ion-icon
+                        name="create-outline"
+                        slot="start">
+                      </ion-icon>
+
                       Edit
+
                     </ion-button>
-                    <ion-button fill="outline" color="danger">
-                      <ion-icon name="trash-outline" slot="start"></ion-icon>
+
+                    <ion-button
+                      fill="outline"
+                      color="danger"
+                      (click)="removeRoom(room)">
+
+                      <ion-icon
+                        name="trash-outline"
+                        slot="start">
+                      </ion-icon>
+
                       Remove
+
                     </ion-button>
+
                   </div>
+
                 </ion-card-content>
               </ion-card>
             </ion-col>
-
-            
           </ion-row>
         </ion-grid>
 
-      </div>
+        <div
+          *ngIf="!isLoading && !errorMessage && rooms.length === 0"
+          class="empty-message">
 
+          <p>No rooms available. Click Add New Room to create one.</p>
+
+        </div>
+      </div>
     </ion-content>
   </div>
 </ion-split-pane>

@@ -50,7 +50,8 @@ ion-menu ion-list {
   display: block;
   background: transparent;
   padding: 20px 12px;
-  flex: 1;
+  flex: 1 1 auto;
+  min-height: 0;
 }
 
 ion-menu ion-list ion-menu-toggle {
@@ -88,16 +89,33 @@ ion-menu ion-item.active-menu ion-label {
   color: white;
 }
 
+/* LOGOUT BUTTON */
 .sidebar-footer {
+  display: block;
+  flex-shrink: 0;
   margin-top: auto;
-  padding: 10px;
+  padding: 10px 12px 20px;
+  width: 100%;
+}
+
+.sidebar-footer ion-menu-toggle {
+  display: block;
 }
 
 .sidebar-footer ion-item {
+  --background: transparent;
+  --color: #173baf;
   --border-radius: 25px;
   --border-color: #173baf;
   --border-style: solid;
   --border-width: 1px;
+  min-height: 45px;
+  font-size: 14px;
+}
+
+.sidebar-footer ion-item ion-icon,
+.sidebar-footer ion-item ion-label {
+  color: #173baf;
 }
 
 .ion-page {

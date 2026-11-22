@@ -1,4 +1,3 @@
-
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>Rooms</ion-title>
@@ -57,15 +56,12 @@
 
           <ion-card-content>
 
-          
             <h2>{{ room.room_name }}</h2>
 
-           
             <h3>
               {{ room.availability }}
             </h3>
 
-          
             <h1>
               Details: {{ room.description }}
 
@@ -78,11 +74,11 @@
               ₱{{ room.price }}/day & night
             </h1>
 
-
             <ion-button
               expand="block"
               class="book-button"
-              [disabled]="room.availability === 'Booked'">
+              [disabled]="room.availability === 'Booked'"
+              (click)="bookRoom(room)">
 
               {{ room.availability === 'Booked' ? 'Booked' : 'Book Now' }}
 
