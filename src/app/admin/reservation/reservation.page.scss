@@ -1,4 +1,6 @@
 
+/* SIDEBAR / SPLIT PANE */
+
 ion-split-pane {
   --side-width: 230px;
   --side-min-width: 230px;
@@ -10,6 +12,7 @@ ion-menu {
   --width: 230px;
 }
 
+/* Sidebar Header */
 .sidebar-header {
   height: 130px;
   background: linear-gradient(135deg, #173baf, #102d91);
@@ -36,6 +39,7 @@ ion-menu {
   opacity: 0.8;
 }
 
+/* Sidebar Content */
 ion-menu ion-content {
   --background: #f8f8ed;
 }
@@ -46,6 +50,7 @@ ion-menu ion-content::part(scroll) {
   min-height: 100%;
 }
 
+/* Sidebar Navigation */
 ion-menu ion-list {
   display: block;
   background: transparent;
@@ -79,17 +84,20 @@ ion-menu ion-item ion-icon {
   color: #173baf;
 }
 
-ion-menu ion-item.active-menu {
+/* Active Sidebar Menu */
+ion-menu ion-list ion-item.active-menu {
   --background: #173baf;
   --color: white;
+  --border-radius: 10px;
 }
 
-ion-menu ion-item.active-menu ion-icon,
-ion-menu ion-item.active-menu ion-label {
+ion-menu ion-list ion-item.active-menu ion-icon,
+ion-menu ion-list ion-item.active-menu ion-label {
   color: white;
 }
 
 /* LOGOUT BUTTON */
+
 .sidebar-footer {
   display: block;
   flex-shrink: 0;
@@ -118,9 +126,12 @@ ion-menu ion-item.active-menu ion-label {
   color: #173baf;
 }
 
+/* Main Page */
 .ion-page {
   min-width: 0;
 }
+
+/*  RESERVATIONS PAGE */
 
 .reservations-content {
   --background: #f4f5ed;
@@ -136,6 +147,8 @@ ion-menu ion-item.active-menu ion-label {
 .page-heading {
   padding: 0;
 }
+
+/* RESERVATION BANNER */
 
 .reservation-banner {
   position: relative;
@@ -185,6 +198,8 @@ ion-menu ion-item.active-menu ion-label {
   mask-image: linear-gradient(to right, transparent, black 35%);
 }
 
+/* FILTER BUTTONS */
+
 .filter-buttons {
   display: flex;
   align-items: center;
@@ -218,6 +233,8 @@ ion-menu ion-item.active-menu ion-label {
   --color: #ffffff;
 }
 
+/*RESERVATION CARDS */
+
 .reservation-card {
   margin: 0 0 15px;
   width: 100%;
@@ -238,6 +255,7 @@ ion-menu ion-item.active-menu ion-label {
   gap: 16px;
 }
 
+/* Room Image */
 .reservation-details ion-img {
   width: 120px;
   height: 88px;
@@ -251,6 +269,7 @@ ion-menu ion-item.active-menu ion-label {
   object-fit: cover;
 }
 
+/* Booking Information */
 .booking-info {
   min-width: 0;
 }
@@ -277,6 +296,8 @@ ion-menu ion-item.active-menu ion-label {
   font-size: 13px;
   flex-shrink: 0;
 }
+
+/* BOOKING STATUS */
 
 .booking-status {
   display: flex;
@@ -306,6 +327,8 @@ ion-menu ion-item.active-menu ion-label {
   margin: 0;
 }
 
+/*  BOOKING ACTIONS */
+
 .booking-actions {
   display: flex;
   flex-direction: column;
@@ -323,19 +346,24 @@ ion-menu ion-item.active-menu ion-label {
   text-transform: none;
 }
 
+/* Confirm Button */
 .booking-actions ion-button[color="success"] {
   --background: #17633c;
   --background-hover: #104d2e;
   --color: #ffffff;
 }
 
+/* Cancel Button */
 .booking-actions ion-button[color="danger"] {
   --background: #a62c3c;
   --background-hover: #8d2030;
   --color: #ffffff;
 }
 
+/* Dito po ay yung kapag nasa mobile */
+
 @media (max-width: 900px) {
+
   .reservations-container {
     padding: 20px;
   }
@@ -361,7 +389,12 @@ ion-menu ion-item.active-menu ion-label {
   }
 }
 
+/* =========================================
+   MOBILE RESPONSIVE
+========================================= */
+
 @media (max-width: 600px) {
+
   .reservations-container {
     padding: 15px;
   }
@@ -387,6 +420,7 @@ ion-menu ion-item.active-menu ion-label {
     right: -20px;
   }
 
+  /* Filter Buttons */
   .filter-buttons {
     gap: 6px;
   }
@@ -397,6 +431,7 @@ ion-menu ion-item.active-menu ion-label {
     font-size: 10px;
   }
 
+  /* Reservation Card */
   .reservation-card ion-card-content {
     padding: 12px;
   }
@@ -419,6 +454,7 @@ ion-menu ion-item.active-menu ion-label {
     font-size: 9px;
   }
 
+  /* Booking Status */
   .booking-status {
     grid-column: 2;
     flex-direction: row;
@@ -438,6 +474,7 @@ ion-menu ion-item.active-menu ion-label {
     font-size: 12px;
   }
 
+  /* Booking Action Buttons */
   .booking-actions {
     grid-column: 1 / 3;
     flex-direction: row;

@@ -1,7 +1,7 @@
 
-/* =========================================
+/* 
    GLOBAL
-========================================= */
+ */
 
 html,
 body {
@@ -40,9 +40,9 @@ ion-content h3 {
   color: #102f50;
 }
 
-/* =========================================
+/* 
    HEADER
-========================================= */
+ */
 
 ion-header {
   box-shadow: none;
@@ -71,9 +71,9 @@ ion-header ion-toolbar div span {
   letter-spacing: 2px;
 }
 
-/* =========================================
+/* 
    SECTION 1 - HERO
-========================================= */
+ */
 
 ion-content section:nth-of-type(1) {
   min-height: 330px;
@@ -155,9 +155,9 @@ ion-content section:nth-of-type(1) ion-button {
   display: none;
 }
 
-/* =========================================
+/* 
    SECTION 2 - OUR STORY
-========================================= */
+ */
 
 ion-content section:nth-of-type(2) {
   display: grid;
@@ -204,9 +204,9 @@ ion-content section:nth-of-type(2) > div:last-child ion-icon {
   font-size: 55px;
 }
 
-/* =========================================
+/* 
    SECTION 3 - MISSION AND VISION
-========================================= */
+ */
 
 ion-content section:nth-of-type(3) {
   display: grid;
@@ -260,9 +260,9 @@ ion-content section:nth-of-type(3) ion-card-content {
   padding: 5px 14px 15px;
 }
 
-/* =========================================
+/* 
    SECTION 4 - HOTEL AMENITIES
-========================================= */
+ */
 
 ion-content section:nth-of-type(4) {
   padding: 20px 5%;
@@ -325,9 +325,9 @@ ion-content section:nth-of-type(4) h3 {
   font-weight: bold;
 }
 
-/* =========================================
+/* 
    SECTION 5 - WHY CHOOSE CJK
-========================================= */
+ */
 
 ion-content section:nth-of-type(5) {
   display: grid;
@@ -381,9 +381,9 @@ ion-content section:nth-of-type(5) > div:last-child > div span {
   font-size: 11px;
 }
 
-/* =========================================
+/* 
    SECTION 6 - WONDERFUL STAY
-========================================= */
+ */
 
 ion-content section:nth-of-type(6) {
   padding: 5px 4% 15px;
@@ -462,9 +462,9 @@ ion-content section:nth-of-type(6) ion-card-content p {
   margin: 0;
 }
 
-/* =========================================
+/* 
    FOOTER - CJK HOTEL + CONTACT DETAILS
-========================================= */
+ */
 
 ion-footer {
   position: relative !important;
@@ -589,9 +589,9 @@ ion-footer > div:last-child {
   line-height: 1;
 }
 
-/* =========================================
+/* 
    TABLET AND MOBILE
-========================================= */
+ */
 
 @media (max-width: 600px) {
 
@@ -740,9 +740,9 @@ ion-footer > div:last-child {
   }
 }
 
-/* =========================================
+/* 
    DESKTOP RESPONSIVE
-========================================= */
+ */
 
 @media (min-width: 768px) {
 
